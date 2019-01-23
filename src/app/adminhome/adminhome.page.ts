@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-adminhome',
@@ -10,41 +11,28 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class AdminhomePage implements OnInit {
   email: any;
-  constructor(private route: ActivatedRoute,private router: Router,private authService: AuthenticationService) { }
+  constructor(private route: ActivatedRoute,private router: Router,private authService: AuthenticationService,private storage: Storage) { }
 
   ngOnInit() {
-    this.route.params.subscribe(data => {
-      this.email = data;
-    });
+    // this.route.params.subscribe(data => {
+    //   this.email = data;
+    // });
 
   }
 
-  // ionViewWillEnter(){
-  //   //call method to check if user is authenticated upon loading this page
-  //   this.CheckIfAuthenticated();
-  // }
+  ionViewWillEnter(){
+    //call method to check if user is authenticated upon loading this page
+    this.CheckIfAuthenticated();
+  }
 
   //this method will check whether the user has authenticated on this page
-  // CheckIfAuthenticated(){
-  //   this.authService.authenticationState.subscribe(state => {
-  //     if (state) {
-  //       this.router.navigate(['adminhome/:email']);
-  //     } else {
-  //       this.router.navigate(['login']);
-  //     }
-  //   });
-  // }
-
-  // ionViewWillEnter() {
-  //   this.CheckIfAdminExist();
-  // }
-  // CheckIfAdminExist(){
-  //   //redirect invalid user back to login page if admin does not exist
-  //   console.log("bleh: " + JSON.stringify(this.email));
-  //   if(this.email == null || this.email == ""){
-  //     this.router.navigate(['/login']);
-  //   }
-  // }
+  CheckIfAuthenticated(){
+    var promise = this.storage.get('email');
+    Promise.all([promise]).then((arrayOfResults) => {
+      console.log(arrayOfResults[0]);
+      this.email = String(arrayOfResults[0]);
+    });
+  }
 
   logout() {
     this.authService.logout();

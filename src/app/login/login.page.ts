@@ -54,12 +54,12 @@ export class LoginPage implements OnInit {
         //check if it's admin
         if(JSON.stringify(userEmail).includes('admin')){
           //admin proceed to their respective page
-          this.navigateToAdminHome(userEmail);
+          //this.navigateToAdminHome(userEmail);
         }
         else
         {
           //student proceed to their respective page
-          this.navigateToStudentHome(userEmail);
+          //this.navigateToStudentHome(userEmail);
         }
       }
     }, err =>{

@@ -41,10 +41,11 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      //this auth service will validate whether the user has logged in for all the pages in the app
       this.authenticationService.authenticationState.subscribe(state => {
         if (state) {
           var promise = this.storage.get('email');
-          Promise.all([promise]).then((arrayOfResults) => {
+          Promise.all([promise]).then((arrayOfResults) => { //to test whether is the cause of redirecting multiple times for admin
             console.log(arrayOfResults[0]);
             if (String(arrayOfResults[0]).includes('admin')) {
               this.router.navigate(['adminhome']);
