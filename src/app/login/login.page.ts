@@ -30,6 +30,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/login']);
       }
     });
+
   }
   //this method will check whether the user has authenticated on this page
   navigateToAdminHome(user){
@@ -48,19 +49,16 @@ export class LoginPage implements OnInit {
       var jwtIdToken = res["idToken"]["jwtToken"];
       
       if(jwtIdToken != null || jwtIdToken != ""){
-        //store token in ionic local storage to check authentication for future use
-        this.authService.login(jwtIdToken);
+        //store token and user email in ionic local storage to check authentication for auto login
+        this.authService.login(jwtIdToken,userEmail);
         //check if it's admin
         if(JSON.stringify(userEmail).includes('admin')){
-          // alert('I am an admin and my email is ' + userEmail);
           //admin proceed to their respective page
-          
           this.navigateToAdminHome(userEmail);
         }
         else
         {
           //student proceed to their respective page
-          // alert('I am a student and my email is ' + userEmail);
           this.navigateToStudentHome(userEmail);
         }
       }

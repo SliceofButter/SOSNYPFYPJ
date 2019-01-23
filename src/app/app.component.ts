@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private storage: Storage
   ) {
     this.initializeApp();
   }
@@ -39,13 +41,24 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      // this.authenticationService.authenticationState.subscribe(state => {
-      //   if (state) {
-      //     //this.router.navigate(['adminhome', 'studenthome']);
-      //   } else {
-      //     this.router.navigate(['login']);
-      //   }
-      // });
+      this.authenticationService.authenticationState.subscribe(state => {
+        if (state) {
+          var promise = this.storage.get('email');
+          Promise.all([promise]).then((arrayOfResults) => {
+            console.log(arrayOfResults[0]);
+            if (String(arrayOfResults[0]).includes('admin')) {
+              this.router.navigate(['adminhome']);
+            }
+            else
+            {
+              this.router.navigate(['studenthome']);
+            }
+          });
+          //this.router.navigate(['adminhome', 'studenthome']);
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
 
     });
   }
