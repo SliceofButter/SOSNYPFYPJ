@@ -9,8 +9,18 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content padding>
+
+  
 
   Welcome to student home page! {{email}}
 
+  <ion-button (click)="getCurrentLocation()">Get Current Location</ion-button>
+  <br/>
+  lat: {{lat}}, lng: {{lng}}
+
 </ion-content>
+
+

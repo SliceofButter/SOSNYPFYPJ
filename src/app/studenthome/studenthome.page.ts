@@ -11,7 +11,10 @@ import { Storage } from '@ionic/storage';
 })
 export class StudenthomePage implements OnInit {
   email: any;
-  constructor(private route: ActivatedRoute,private router: Router, private authService: AuthenticationService,private storage: Storage) { }
+  geolocationPosition: any;
+  lat:any;
+  lng:any;
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage) { }
 
   ngOnInit() {
     // this.route.params.subscribe(data => {
@@ -19,14 +22,14 @@ export class StudenthomePage implements OnInit {
     // });
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     //call method to check if user is authenticated upon loading this page
     this.CheckIfAuthenticated();
   }
 
 
   //this method will check whether the user has authenticated on this page
-  CheckIfAuthenticated(){
+  CheckIfAuthenticated() {
     var promise = this.storage.get('email');
     Promise.all([promise]).then((arrayOfResults) => {
       console.log(arrayOfResults[0]);
@@ -38,5 +41,40 @@ export class StudenthomePage implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  getCurrentLocation() {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 600000
+    };
+
+    if (window.navigator && window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(
+        position => {
+          this.geolocationPosition = position,
+            console.log("Lat: " + position.coords.latitude);
+            console.log("Lng: " + position.coords.longitude);
+            this.lat = position.coords.latitude;
+            this.lng = position.coords.longitude;
+        },
+        error => {
+          switch (error.code) {
+            case 1:
+              alert('Permission Denied');
+              break;
+            case 2:
+            alert('Position Unavailable');
+              break;
+            case 3:
+            alert('Timeout');
+              break;
+          }
+        },
+        {maximumAge:600000, timeout:5000, enableHighAccuracy: true}
+      );
+  };
+}
+ 
 
 }
