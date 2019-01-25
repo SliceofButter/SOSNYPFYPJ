@@ -12,5 +12,12 @@
 <ion-content padding>
 
   Welcome to admin home page! {{email}}
+
+  <br/>
+
+  <ion-button (click)="getPermission()">Grant Permission</ion-button>
+  <ion-button (click)="fcm.sub('sos')">Subscribe to Topic</ion-button>
+
+  bleh
   
 </ion-content>

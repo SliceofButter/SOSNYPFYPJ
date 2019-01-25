@@ -3,6 +3,8 @@ import { AuthenticationService } from '../services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { FcmService } from '../services/fcm.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-studenthome',
@@ -12,14 +14,35 @@ import { Storage } from '@ionic/storage';
 export class StudenthomePage implements OnInit {
   email: any;
   geolocationPosition: any;
-  lat:any;
-  lng:any;
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage) { }
+  lat: any;
+  lng: any;
+  db: any;
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService) {
+
+  }
 
   ngOnInit() {
     // this.route.params.subscribe(data => {
     //   this.email = data;
     // });
+  }
+
+  customMessage(lat, lng) {
+    console.log("inside customMessage before if else");
+
+    console.log("customMessage lat: " + lat);
+    console.log("customMessage lng: " + lng);
+
+    if (lat != null || lng != null) {
+      if (lat != "" || lng != "") {
+        const headline = "Emergency help requested from " + this.email + "! He/she is located at lat: " + lat + ", lng: " + lng;
+
+        var docRef = this.fbdb.collection('sos').doc(this.email+"_" + Date.now());
+        console.log("inside customMessage after if else");
+        docRef.set({headline});
+
+      }
+    }
   }
 
   ionViewWillEnter() {
@@ -53,10 +76,13 @@ export class StudenthomePage implements OnInit {
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position,
-            console.log("Lat: " + position.coords.latitude);
-            console.log("Lng: " + position.coords.longitude);
-            this.lat = position.coords.latitude;
-            this.lng = position.coords.longitude;
+          console.log("Lat: " + position.coords.latitude);
+          console.log("Lng: " + position.coords.longitude);
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          console.log("inside studentpage.ts");
+          this.customMessage(position.coords.latitude, position.coords.longitude);
+
         },
         error => {
           switch (error.code) {
@@ -64,17 +90,17 @@ export class StudenthomePage implements OnInit {
               alert('Permission Denied');
               break;
             case 2:
-            alert('Position Unavailable');
+              alert('Position Unavailable');
               break;
             case 3:
-            alert('Timeout');
+              alert('Timeout');
               break;
           }
         },
-        {maximumAge:600000, timeout:5000, enableHighAccuracy: true}
+        { maximumAge: 600000, timeout: 5000, enableHighAccuracy: true }
       );
-  };
-}
- 
+    };
+  }
+
 
 }

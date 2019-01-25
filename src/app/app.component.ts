@@ -6,6 +6,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
+import { FcmService } from '../app/services/fcm.service';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private storage: Storage
+    private storage: Storage,
+    private fcm: FcmService
   ) {
     this.initializeApp();
   }
@@ -40,6 +42,10 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      // To ensure that notifications are always handled in the foreground when the app is being actively used.
+      this.fcm.showMessages().subscribe();
+
 
       //this auth service will validate whether the user has logged in for all the pages in the app
       this.authenticationService.authenticationState.subscribe(state => {

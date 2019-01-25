@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { Storage } from '@ionic/storage';
+import { FcmService } from '../services/fcm.service';
 
 @Component({
   selector: 'app-adminhome',
@@ -11,7 +12,7 @@ import { Storage } from '@ionic/storage';
 })
 export class AdminhomePage implements OnInit {
   email: any;
-  constructor(private route: ActivatedRoute,private router: Router,private authService: AuthenticationService,private storage: Storage) { }
+  constructor(private route: ActivatedRoute,private router: Router,private authService: AuthenticationService,private storage: Storage, public fcm: FcmService) { }
 
   ngOnInit() {
     // this.route.params.subscribe(data => {
@@ -19,6 +20,12 @@ export class AdminhomePage implements OnInit {
     // });
 
   }
+
+  getPermission() {
+    this.fcm.getPermission().subscribe();
+  }
+
+
 
   ionViewWillEnter(){
     //call method to check if user is authenticated upon loading this page
