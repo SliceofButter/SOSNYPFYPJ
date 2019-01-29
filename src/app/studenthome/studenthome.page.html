@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="logout()">
@@ -7,23 +7,34 @@
     </ion-buttons>
     <ion-title>Student Home</ion-title>
   </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Student {{email}}
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 
 
 <ion-content padding>
 
-  
-
-  Welcome to student home page! {{email}}
-
-  <ion-button (click)="getCurrentLocation()">Get Current Location</ion-button>
+  <!-- <ion-button (click)="getCurrentLocation()">Get Current Location</ion-button> -->
   <br/>
   lat: {{lat}}, lng: {{lng}}
 
   <br/>
 
-  meow meow
+  
+    <ion-button shape="round" (click)="getCurrentLocation()" color="danger">
+      <ion-icon name="alert"></ion-icon>
+    </ion-button>
+  
 
 </ion-content>
 

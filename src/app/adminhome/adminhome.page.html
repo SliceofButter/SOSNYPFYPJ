@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="logout()">
@@ -7,17 +7,28 @@
     </ion-buttons>
     <ion-title>Admin Home</ion-title>
   </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Admin {{email}}
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
 
-  Welcome to admin home page! {{email}}
+
+<ion-content padding>
 
   <br/>
 
   <ion-button (click)="getPermission()">Grant Permission</ion-button>
   <ion-button (click)="fcm.sub('sos')">Subscribe to Topic</ion-button>
 
-  bleh
+  fish
   
 </ion-content>

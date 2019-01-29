@@ -18,7 +18,8 @@ const routes: Routes = [
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'studenthome', canActivate: [AuthGuardService], loadChildren: './studenthome/studenthome.module#StudenthomePageModule' },
-  { path: 'adminhome', canActivate: [AuthGuardService], loadChildren: './adminhome/adminhome.module#AdminhomePageModule' }
+  { path: 'adminhome', canActivate: [AuthGuardService], loadChildren: './adminhome/adminhome.module#AdminhomePageModule' },
+  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' }
 ];
 
 @NgModule({

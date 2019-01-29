@@ -28,19 +28,15 @@ export class StudenthomePage implements OnInit {
   }
 
   customMessage(lat, lng) {
-    console.log("inside customMessage before if else");
-
-    console.log("customMessage lat: " + lat);
-    console.log("customMessage lng: " + lng);
+  
 
     if (lat != null || lng != null) {
       if (lat != "" || lng != "") {
         const headline = "Emergency help requested from " + this.email + "! He/she is located at lat: " + lat + ", lng: " + lng;
 
         var docRef = this.fbdb.collection('sos').doc(this.email+"_" + Date.now());
-        console.log("inside customMessage after if else");
         docRef.set({headline});
-
+        alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.");
       }
     }
   }

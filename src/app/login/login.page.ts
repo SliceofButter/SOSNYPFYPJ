@@ -21,6 +21,12 @@ export class LoginPage implements OnInit {
     //disables sidemenu on login page
     this.menuCtrl.enable(false);
   }
+
+  ionViewWillLeave(){
+    console.log('Leaving login Page');
+    this.menuCtrl.enable(true);
+  }
+
   //this method will check whether the user has authenticated on this page
   navigateToStudentHome(user){
     this.authService.authenticationState.subscribe(state => {
