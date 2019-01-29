@@ -18,6 +18,11 @@ export class AppComponent {
       title: 'Logout',
       url: '/logout',
       icon: 'log-out'
+    },
+    {
+      title: 'Inbox',
+      url: '/inbox',
+      icon: 'mail'
     }
     
   ];

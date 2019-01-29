@@ -26,9 +26,9 @@
 
   <br/>
 
-  <ion-button (click)="getPermission()">Grant Permission</ion-button>
-  <ion-button (click)="fcm.sub('sos')">Subscribe to Topic</ion-button>
+  <ion-button (click)="getPermission()" [disabled]="alertPermission == 1">Alert Me</ion-button>
+  <!-- <ion-button (click)="fcm.sub('sos')">Subscribe to Topic</ion-button> -->
 
-  fish
+  exotic
   
 </ion-content>
