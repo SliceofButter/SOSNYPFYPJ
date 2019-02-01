@@ -6,4 +6,13 @@
 
 <ion-content padding>
 
+  <ion-card *ngFor="let message of messages | async" routerLink="/detail/{{message.id}}">
+    <ion-card-header>
+      {{ message.id }}
+    </ion-card-header>
+    <ion-card-content>
+     {{ message.headline }}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
