@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { FcmService } from '../services/fcm.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { SOS } from '../classes/sos';
 
 @Component({
   selector: 'app-studenthome',
@@ -32,10 +33,22 @@ export class StudenthomePage implements OnInit {
 
     if (lat != null || lng != null) {
       if (lat != "" || lng != "") {
-        const headline = "Emergency help requested from " + this.email + "! He/she is located at lat: " + lat + ", lng: " + lng;
 
-        var docRef = this.fbdb.collection('sos').doc(this.email+"_" + Date.now());
-        docRef.set({headline});
+        //actual message by student
+        const headline = "Emergency help requested from " + this.email + "! He/she is located at lat: " + lat + ", lng: " + lng;
+        
+        //date options
+        let options: Intl.DateTimeFormatOptions = {
+          day: "numeric", month: "long", year: "numeric",
+          hour: "2-digit", minute: "2-digit"
+      };
+      
+        //current date time
+        var currentDateTime = new Date().toLocaleDateString('en-SG',options);
+        var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
+        var sos = new SOS();
+        sos.InitializeSOSRecord(headline, currentDateTime,this.email);
+        docRef.set(Object.assign({},sos));
         alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.");
       }
     }
@@ -56,11 +69,13 @@ export class StudenthomePage implements OnInit {
     });
   }
 
-
+  //logout function using service
   logout() {
     this.authService.logout();
   }
 
+
+  //core function to get user current location via browser since this is a PWA app.
   getCurrentLocation() {
     var options = {
       enableHighAccuracy: true,

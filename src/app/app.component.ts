@@ -13,19 +13,21 @@ import { FcmService } from '../app/services/fcm.service';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Logout',
-      url: '/logout',
-      icon: 'log-out'
-    },
-    {
-      title: 'Inbox',
-      url: '/inbox',
-      icon: 'mail'
-    }
+  // public appPages = [
+  //   {
+  //     title: 'Logout',
+  //     url: '/logout',
+  //     icon: 'log-out'
+  //   },
+  //   {
+  //     title: 'Inbox',
+  //     url: '/inbox',
+  //     icon: 'mail'
+  //   }
     
-  ];
+  // ];
+
+  public appPages = [];
 
   constructor(
     private platform: Platform,
@@ -58,10 +60,30 @@ export class AppComponent {
               // for admin
               this.fcm.showMessages().subscribe();
               this.fcm.getPermission().subscribe();
-              
+              this.appPages = [
+                  {
+                    title: 'Logout',
+                    url: '/logout',
+                    icon: 'log-out'
+                  },
+                  {
+                    title: 'Inbox',
+                    url: '/inbox',
+                    icon: 'mail'
+                  }
+                  
+                ];
               this.router.navigate(['adminhome']);
             }
             else {
+             
+              this.appPages = [
+                {
+                  title: 'Logout',
+                  url: '/logout',
+                  icon: 'log-out'
+                }
+              ];
               this.router.navigate(['studenthome']);
             }
           });
