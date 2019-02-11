@@ -28,14 +28,14 @@ export class StudenthomePage implements OnInit {
     // });
   }
 
-  customMessage(lat, lng) {
+  customMessage(lat, lng, mapURL) {
   
 
     if (lat != null || lng != null) {
       if (lat != "" || lng != "") {
 
         //actual message by student
-        const headline = "Emergency help requested from " + this.email + "! He/she is located at lat: " + lat + ", lng: " + lng;
+        const headline = "Emergency help requested from " + this.email + "! He/she is located at : " + mapURL;
         
         //date options
         let options: Intl.DateTimeFormatOptions = {
@@ -47,7 +47,7 @@ export class StudenthomePage implements OnInit {
         var currentDateTime = new Date().toLocaleDateString('en-SG',options);
         var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
         var sos = new SOS();
-        sos.InitializeSOSRecord(headline, currentDateTime,this.email);
+        sos.InitializeSOSRecord(headline, currentDateTime,this.email,mapURL);
         docRef.set(Object.assign({},sos));
         alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.");
       }
@@ -89,10 +89,11 @@ export class StudenthomePage implements OnInit {
           this.geolocationPosition = position,
           console.log("Lat: " + position.coords.latitude);
           console.log("Lng: " + position.coords.longitude);
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
+          // this.lat = position.coords.latitude;
+          // this.lng = position.coords.longitude;
+          var googleMapURL = 'https://maps.google.com/maps?q='+position.coords.latitude+','+position.coords.longitude+'&hl=es;z=14&amp;output=embed';
           console.log("inside studentpage.ts");
-          this.customMessage(position.coords.latitude, position.coords.longitude);
+          this.customMessage(position.coords.latitude, position.coords.longitude, googleMapURL);
 
         },
         error => {

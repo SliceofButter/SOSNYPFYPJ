@@ -28,6 +28,7 @@ export class AppComponent {
   // ];
 
   public appPages = [];
+  public email;
 
   constructor(
     private platform: Platform,
@@ -55,6 +56,7 @@ export class AppComponent {
           var promise = this.storage.get('email');
           Promise.all([promise]).then((arrayOfResults) => { //to test whether is the cause of redirecting multiple times for admin
             console.log(arrayOfResults[0]);
+            this.email = String(arrayOfResults[0]);
             if (String(arrayOfResults[0]).includes('admin')) {
               // To ensure that notifications are always handled in the foreground when the app is being actively used.
               // for admin

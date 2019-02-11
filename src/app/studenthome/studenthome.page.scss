@@ -1,0 +1,28 @@
+#emergencyBtn{
+  position: fixed;
+  left: 50%;
+  bottom: 60px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+#emergencyIntro{
+  position: fixed;
+  left: 50%;
+  top: 150px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+#emergencyIcon{
+    text-align: center;
+}
+
+#emergencyIonButton{
+    height: 150px;
+    width: 150px;
+}
+
+#emergencyText{
+    text-align: center;
+}

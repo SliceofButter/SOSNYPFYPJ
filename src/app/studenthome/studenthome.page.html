@@ -15,7 +15,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Student {{email}}
+      EMERGENCY HELP
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -26,14 +26,35 @@
 
   <!-- <ion-button (click)="getCurrentLocation()">Get Current Location</ion-button> -->
   <br/>
-  lat: {{lat}}, lng: {{lng}}
+  <!-- lat: {{lat}}, lng: {{lng}} -->
 
   <br/>
 
+
+
+  <div id="emergencyIntro">
+    <div id="emergencyIcon">
+        <img src="../../assets/icons/siren.png"/>
+    </div>
+    <br/>
+    <div id="emergencyText">
+        <p>Please tap the red button below to make an emergency notification</p>
+    </div>
+  </div>
+
+
+  <hr>
+
+    <div id="emergencyBtn">
+      <ion-button shape="round" id="emergencyIonButton" (click)="getCurrentLocation()" color="danger">
+        <!-- <ion-icon name="alert"></ion-icon> -->
+        SEND HELP
+      </ion-button>
+    </div>
+      
+    
+
   
-    <ion-button shape="round" (click)="getCurrentLocation()" color="danger">
-      <ion-icon name="alert"></ion-icon>
-    </ion-button>
   
 
 </ion-content>
