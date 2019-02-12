@@ -45,9 +45,10 @@ export class StudenthomePage implements OnInit {
       
         //current date time
         var currentDateTime = new Date().toLocaleDateString('en-SG',options);
+        var newDate = new Date(Date.parse(Date()));
         var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
         var sos = new SOS();
-        sos.InitializeSOSRecord(headline, currentDateTime,this.email,mapURL);
+        sos.InitializeSOSRecord(headline, newDate,this.email,mapURL);
         docRef.set(Object.assign({},sos));
         alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.");
       }

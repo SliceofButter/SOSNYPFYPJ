@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 // import { Observable } from '../../../node_modules/rxjs';
 // import { of } from 'rxjs/Observable/of';
 import { Observable , of} from 'rxjs';
+import { SOS } from '../classes/sos';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,7 @@ export class DbserviceService {
     // console.log("what is this message list 2");
     // console.log(this.messagesList);
     // return this.messagesList;
+    //this.fbdb.collection('sos').ref.orderBy("currentDate", "desc");
     return this.fbdb.collection('sos');
   }
 

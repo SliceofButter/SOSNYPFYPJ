@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DbserviceService } from '../services/dbservice.service';
 import { Observable } from 'rxjs';
+import { tap } from '../../../node_modules/rxjs/operators';
+import { SOS } from '../classes/sos';
 
 @Component({
   selector: 'app-inbox',
@@ -10,7 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class InboxPage implements OnInit {
 
-   messages;
+   messages:Observable<any[]>;
+   messagesList: SOS[] = [];
   constructor(private dbService: DbserviceService) { }
 
   ngOnInit() {
@@ -32,16 +35,25 @@ export class InboxPage implements OnInit {
     // this.dbService.RetrieveAllMessages()
     // .subscribe(data => console.log(data));
 
-    this.messages = this.dbService.RetrieveAllMessage().valueChanges();
-      
+     this.dbService.RetrieveAllMessage().valueChanges().subscribe((message) => {
+      this.messagesList = message;
+      this.getMessageArray(this.messagesList);
+    })
+    
+    
       console.log("Can u please work: ");
       console.log(this.messages);
 
     // this.messages.forEach(x => console.log(x));
+  
+  }
+
+  getMessageArray(messages:SOS[]){
     
    
 
-    
+    this.messagesList =  messages.sort((a,b)=> { return b.currentDate - a.currentDate });
+    console.log(messages);
   }
   
   

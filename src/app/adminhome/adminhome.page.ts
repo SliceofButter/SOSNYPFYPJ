@@ -19,7 +19,7 @@ export class AdminhomePage implements OnInit {
     // this.route.params.subscribe(data => {
     //   this.email = data;
     // });
-
+    
   }
 
   getPermission() {
@@ -35,6 +35,7 @@ export class AdminhomePage implements OnInit {
     else
     {
       this.alertPermission = 1;
+      this.getPermission();
     }
   }
 
@@ -45,6 +46,8 @@ export class AdminhomePage implements OnInit {
 
     //check if alert is available
     this.isAlertAvailale();
+
+    
   }
 
   //this method will check whether the user has authenticated on this page
