@@ -23,7 +23,7 @@ export class AdminhomePage implements OnInit {
   }
 
   getPermission() {
-    this.fcm.getPermission().subscribe();
+    //this.fcm.getPermission().subscribe();
     this.fcm.sub('sos');
   }
   
@@ -45,7 +45,7 @@ export class AdminhomePage implements OnInit {
     this.CheckIfAuthenticated();
 
     //check if alert is available
-    this.isAlertAvailale();
+    // this.isAlertAvailale();
 
     
   }

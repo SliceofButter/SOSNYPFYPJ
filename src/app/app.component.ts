@@ -62,6 +62,16 @@ export class AppComponent {
               // for admin
               this.fcm.showMessages().subscribe();
               this.fcm.getPermission().subscribe();
+
+              if(this.fcm.token == null || this.fcm.token == ""){
+                
+              }
+              else
+              {
+                //the fcm.token must not be empty in order to subscribe to 'sos' topic.
+                this.fcm.sub('sos');
+              }
+
               this.appPages = [
                   {
                     title: 'Logout',

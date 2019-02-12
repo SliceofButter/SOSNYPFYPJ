@@ -46,25 +46,31 @@ export const sendOnFirestoreCreate = functions.firestore
         const notification: admin.messaging.Notification = {
             title: 'Emergency help from a student!!!',
             body: sos!.headline
+            // clickAction: sos!.mapURL,
+            // icon: 'https://image.flaticon.com/icons/svg/1100/1100349.svg'
         };
+
+
+        
 
         const payload: admin.messaging.Message = {
             notification,
             webpush: {
                 notification: {
                     vibrate: [200, 100, 200],
-                    icon: 'https://image.flaticon.com/icons/svg/1100/1100349.svg',
-                    actions: [
-                        {
-                            action: sos!.mapURL,
-                            title: "Open Location"
-                        }
-                    ]
+                    icon: 'https://image.flaticon.com/icons/svg/1100/1100349.svg'
+                },
+
+                fcm_options: {
+                    link: sos!.mapURL
                 }
-                
+
             },
             topic: 'sos'
         };
+        // const payload: admin.messaging.MessagingPayload = {
+        //     notification: notification
+        // };
 
         return admin.messaging().send(payload);
     });
