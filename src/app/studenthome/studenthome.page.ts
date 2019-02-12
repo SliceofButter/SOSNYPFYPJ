@@ -35,7 +35,7 @@ export class StudenthomePage implements OnInit {
       if (lat != "" || lng != "") {
 
         //actual message by student
-        const headline = "Emergency help requested from " + this.email + "! He/she is located at : " + mapURL;
+        const headline = "Emergency help requested from " + this.email;
         
         //date options
         let options: Intl.DateTimeFormatOptions = {

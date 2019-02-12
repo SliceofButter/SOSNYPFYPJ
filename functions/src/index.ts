@@ -53,8 +53,15 @@ export const sendOnFirestoreCreate = functions.firestore
             webpush: {
                 notification: {
                     vibrate: [200, 100, 200],
-                    icon: 'https://image.flaticon.com/icons/svg/1100/1100349.svg'
+                    icon: 'https://image.flaticon.com/icons/svg/1100/1100349.svg',
+                    actions: [
+                        {
+                            action: sos!.mapURL,
+                            title: "Open Location"
+                        }
+                    ]
                 }
+                
             },
             topic: 'sos'
         };

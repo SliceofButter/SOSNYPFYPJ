@@ -14,6 +14,8 @@ export class InboxPage implements OnInit {
 
    messages:Observable<any[]>;
    messagesList: SOS[] = [];
+   lazyList: SOS[] = [];
+   pageLimit = 5;
   constructor(private dbService: DbserviceService) { }
 
   ngOnInit() {
@@ -52,9 +54,42 @@ export class InboxPage implements OnInit {
     
    
 
-    this.messagesList =  messages.sort((a,b)=> { return b.currentDate - a.currentDate });
-    console.log(messages);
+    this.messagesList = messages.sort((a,b)=> { return +new Date(b.currentDate.seconds).getTime() - +new Date(a.currentDate.seconds).getTime(); });
+
+    this.messagesList.slice(0,this.pageLimit).forEach((x)=> {
+    this.lazyList.push(x);
+    });
+
+    
+   
+    console.log("sorted listv4");
+    console.log(this.messagesList);
   }
   
+
+  loadMoreMessage(event){
+    console.log('Begin async operation');
+
+    this.pageLimit++;
+
+    setTimeout(() => {
+      
+      this.messagesList.slice(this.pageLimit,this.pageLimit+=4).forEach((x)=> {
+        this.lazyList.push(x);
+        });
+
+      console.log('Async operation has ended');
+      event.target.complete();
+
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+      if (this.messagesList.length == 100) {
+        event.target.disabled = true;
+      }
+      
+
+
+    }, 500);
+  }
   
 }
