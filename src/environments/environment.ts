@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDcy3UfqRHWTlXulzw9EQaztKDlVyKGGRc",
-    authDomain: "sosnyp-dcf02.firebaseapp.com",
-    databaseURL: "https://sosnyp-dcf02.firebaseio.com",
-    projectId: "sosnyp-dcf02",
-    storageBucket: "sosnyp-dcf02.appspot.com",
-    messagingSenderId: "946145522753"
+    apiKey: "AIzaSyDjZ3jcY5FHiHwBAgoMw7vV9oWuWx6rEi8",
+    authDomain: "sosnypfypj-96657.firebaseapp.com",
+    databaseURL: "https://sosnypfypj-96657.firebaseio.com",
+    projectId: "sosnypfypj-96657",
+    storageBucket: "sosnypfypj-96657.appspot.com",
+    messagingSenderId: "664405918149"
   }
 };
 
