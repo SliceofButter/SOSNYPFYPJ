@@ -22,8 +22,9 @@ export class StudenthomePage implements OnInit {
   db: any;
   ref: any;
   task: any;
+  someTextUrl: any;
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService, private afStorage: AngularFireStorage,) {
-
+    this.getSomeText();
   }
 
 
@@ -33,6 +34,13 @@ export class StudenthomePage implements OnInit {
     //   this.email = data;
     // });
   }
+
+  getSomeText(){
+    console.log(firebase.storage().ref().child('8g41y3ras46').getDownloadURL())
+    firebase.storage().ref().child('8g41y3ras46').getDownloadURL()
+    .then(response => this.someTextUrl = response)
+    .catch(error => console.log('error', error))
+   }
 
 
   onfileChanged(event)

@@ -45,6 +45,7 @@
 
   <hr>
   <input #inputcamera type="file"(change)="onUpload($event)"  />
+  Click here to download student location image: <a (click) = "getSomeText()">Student's Location Image</a>
     <div id="emergencyBtn">
       <ion-button shape="round" id="emergencyIonButton" (click)="getCurrentLocation()" color="danger">
         <!-- <ion-icon name="alert"></ion-icon> -->
