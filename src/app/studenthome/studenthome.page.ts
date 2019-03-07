@@ -42,14 +42,16 @@ export class StudenthomePage implements OnInit {
 
   onUpload(event)
   {
+    console.log("before")
     var reader = new FileReader();
-    reader.onloadend = function (evt) {
-      var blob = new Blob([event.target.result], { type: "image/jpeg" });
+   // reader.onloadend = function(e) {
+     // console.log(e.type)
+      //var blob = new Blob([reader.result], { type: "image/jpeg" });
       const randomId = Math.random().toString (36).substring(2);
       var ref = firebase.storage().ref(randomId)
-      var task = ref.put(blob);
+      var task = ref.put(event.target.files[0]);
       console.log(task)
-    }
+    //}
 
     }
   
