@@ -6,6 +6,8 @@ import { Storage } from '@ionic/storage';
 import { FcmService } from '../services/fcm.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SOS } from '../classes/sos';
+import { AngularFireStorageModule, AngularFireStorage } from '@angular/fire/storage';
+import * as firebase from 'firebase'
 
 @Component({
   selector: 'app-studenthome',
@@ -18,9 +20,13 @@ export class StudenthomePage implements OnInit {
   lat: any;
   lng: any;
   db: any;
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService) {
+  ref: any;
+  task: any;
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService, private afStorage: AngularFireStorage,) {
 
   }
+
+
 
   ngOnInit() {
     // this.route.params.subscribe(data => {
@@ -28,7 +34,32 @@ export class StudenthomePage implements OnInit {
     // });
   }
 
+
+  onfileChanged(event)
+  {
+    const file = event.target.files[0];
+  }
+
+  onUpload(event)
+  {
+    var reader = new FileReader();
+    reader.onloadend = function (evt) {
+      var blob = new Blob([event.target.result], { type: "image/jpeg" });
+      const randomId = Math.random().toString (36).substring(2);
+      var ref = firebase.storage().ref(randomId)
+      var task = ref.put(blob);
+      console.log(task)
+    }
+
+    }
+  
+ 
+
   customMessage(lat, lng, mapURL) {
+
+
+
+    
   
 
     if (lat != null || lng != null) {

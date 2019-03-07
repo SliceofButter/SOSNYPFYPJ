@@ -17,6 +17,19 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
+var firebaseConfig = 
+  {
+    apiKey: "AIzaSyDjZ3jcY5FHiHwBAgoMw7vV9oWuWx6rEi8",
+    authDomain: "sosnypfypj-96657.firebaseapp.com",
+    databaseURL: "https://sosnypfypj-96657.firebaseio.com",
+    projectId: "sosnypfypj-96657",
+    storageBucket: "sosnypfypj-96657.appspot.com",
+    messagingSenderId: "664405918149"
+  }
+  
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,10 +39,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireMessagingModule,
     AngularFireFunctionsModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
