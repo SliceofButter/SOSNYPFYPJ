@@ -44,7 +44,7 @@
 
 
   <hr>
-  <input #inputcamera type="file" accept="image/*" capture="camera" (change)="onUpload($event)"  />
+  <input #inputcamera type="file"(change)="onUpload($event)"  />
     <div id="emergencyBtn">
       <ion-button shape="round" id="emergencyIonButton" (click)="getCurrentLocation()" color="danger">
         <!-- <ion-icon name="alert"></ion-icon> -->
