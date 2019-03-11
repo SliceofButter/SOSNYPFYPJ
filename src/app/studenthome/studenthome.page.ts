@@ -8,6 +8,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { SOS } from '../classes/sos';
 import { AngularFireStorageModule, AngularFireStorage } from '@angular/fire/storage';
 import * as firebase from 'firebase';
+import { NavController, ModalController } from '@ionic/angular';
+import { ModalpagePage} from '../modalpage/modalpage.page'
 
 @Component({
   selector: 'app-studenthome',
@@ -15,6 +17,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./studenthome.page.scss'],
 })
 export class StudenthomePage implements OnInit {
+  value = 0;
   email: any;
   geolocationPosition: any;
   lat: any;
@@ -23,7 +26,7 @@ export class StudenthomePage implements OnInit {
   ref: any;
   task: any;
   someTextUrl;
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService, private afStorage: AngularFireStorage,) {
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService, private afStorage: AngularFireStorage,private modalController: ModalController) {
 this.getSomeText();
   }
 
@@ -33,6 +36,17 @@ this.getSomeText();
     // this.route.params.subscribe(data => {
     //   this.email = data;
     // });
+  }
+
+  async openModal()
+  {
+    const modal = await this.modalController.create({
+      component:ModalpagePage,
+      componentProps: {
+        custom_id: this.value
+      }
+    });
+    modal.present();
   }
 
   getSomeText(){

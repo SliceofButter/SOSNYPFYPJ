@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'studenthome', canActivate: [AuthGuardService], loadChildren: './studenthome/studenthome.module#StudenthomePageModule' },
   { path: 'adminhome', canActivate: [AuthGuardService], loadChildren: './adminhome/adminhome.module#AdminhomePageModule' },
   { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' },
-  { path: 'inbox', loadChildren: './inbox/inbox.module#InboxPageModule' }
+  { path: 'inbox', loadChildren: './inbox/inbox.module#InboxPageModule' },  { path: 'modalpage', loadChildren: './modalpage/modalpage.module#ModalpagePageModule' }
+
 ];
 
 @NgModule({

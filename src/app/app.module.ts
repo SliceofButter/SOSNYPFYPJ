@@ -18,6 +18,8 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ModalpagePage } from './modalpage/modalpage.page';
+import { ModalpagePageModule } from './modalpage/modalpage.module';
 
 
 var firebaseConfig = 
@@ -44,6 +46,7 @@ var firebaseConfig =
     AngularFireFunctionsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    ModalpagePageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
