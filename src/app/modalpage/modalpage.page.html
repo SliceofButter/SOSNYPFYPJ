@@ -7,7 +7,7 @@
 <ion-content padding>
 
   My Id is {{ passedId}}
-
+  <input #inputcamera type="file"(change)="changeListener($event)"  />
   <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "getCurrentLocation()">
       Send Help
     </ion-button>

@@ -44,11 +44,11 @@
 
 
   <hr>
-  <input #inputcamera type="file"(change)="onUpload($event)"  />
+  <!--<input #inputcamera type="file"(change)="onUpload($event)"  /> -->
   <a (click)="getSomeText()" href={{someTextUrl}} target="_blank">Student's Location Image</a>
-  <ion-button expand ="full" (click) = 'openModal()'>Modal</ion-button>
+  <!--<ion-button expand ="full" (click) = 'openModal()'>Modal</ion-button>-->
     <div id="emergencyBtn">
-      <ion-button shape="round" id="emergencyIonButton" (click)="getCurrentLocation()" color="danger">
+      <ion-button shape="round" id="emergencyIonButton" (click)="openModal()" color="danger">
         <!-- <ion-icon name="alert"></ion-icon> -->
         SEND HELP
       </ion-button>

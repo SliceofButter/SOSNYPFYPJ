@@ -7,6 +7,7 @@ import { FcmService } from '../services/fcm.service';
 import { NavParams, ModalController } from '@ionic/angular'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SOS } from '../classes/sos';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-modalpage',
@@ -15,17 +16,41 @@ import { SOS } from '../classes/sos';
 })
 export class ModalpagePage implements OnInit {
 
-
   passedId = null; 
   lat: any;
   lng: any;
   email: any;
   geolocationPosition: any;
+  file: File;
   constructor(private navParams:NavParams,private storage: Storage, private modalController: ModalController,private fbdb: AngularFirestore) { }
 
   ngOnInit() {
     this.passedId = this.navParams.get('custom_id');
   }
+
+  changeListener(event) {
+    this.file = event.target.files[0];
+    console.log(this.file)
+  }
+
+  onUpload()
+  {
+    console.log(this.file)
+    console.log("before")
+    var reader = new FileReader();
+   // reader.onloadend = function(e) {
+     // console.log(e.type)
+      //var blob = new Blob([reader.result], { type: "image/jpeg" });
+      const randomId = Math.random().toString (36).substring(2);
+      var ref = firebase.storage().ref(randomId)
+      var task = ref.put(this.file).then(function(snapshot)
+      {
+        console.log("Uploaded a blob or file")
+      });
+      console.log(task)
+    //}
+
+    }
 
   testFunction(lat, lng, mapURL)
   {
@@ -72,6 +97,7 @@ export class ModalpagePage implements OnInit {
       maximumAge: 600000
     };
 
+    
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
@@ -83,6 +109,8 @@ export class ModalpagePage implements OnInit {
           var googleMapURL = 'https://maps.google.com/maps?q='+position.coords.latitude+','+position.coords.longitude+'&hl=es;z=14&amp;output=embed';
           console.log("inside studentpage.ts");
           this.testFunction(position.coords.latitude, position.coords.longitude, googleMapURL);
+          this.onUpload();
+          
 
         },
         error => {
