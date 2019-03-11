@@ -7,7 +7,7 @@ import { FcmService } from '../services/fcm.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SOS } from '../classes/sos';
 import { AngularFireStorageModule, AngularFireStorage } from '@angular/fire/storage';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-studenthome',
@@ -22,9 +22,9 @@ export class StudenthomePage implements OnInit {
   db: any;
   ref: any;
   task: any;
-  someTextUrl: any;
+  someTextUrl;
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService, private afStorage: AngularFireStorage,) {
-    this.getSomeText();
+this.getSomeText();
   }
 
 
@@ -36,8 +36,8 @@ export class StudenthomePage implements OnInit {
   }
 
   getSomeText(){
-    console.log(firebase.storage().ref().child('8g41y3ras46').getDownloadURL())
-    firebase.storage().ref().child('8g41y3ras46').getDownloadURL()
+    console.log(firebase.storage().ref().child('112nbemjzhw').getDownloadURL().then(response => this.someTextUrl = response))
+    firebase.storage().ref().child('112nbemjzhw').getDownloadURL()
     .then(response => this.someTextUrl = response)
     .catch(error => console.log('error', error))
    }
