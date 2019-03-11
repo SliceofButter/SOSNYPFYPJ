@@ -22,10 +22,12 @@ export class ModalpagePage implements OnInit {
   email: any;
   geolocationPosition: any;
   file: File;
+  msg:string;
   constructor(private navParams:NavParams,private storage: Storage, private modalController: ModalController,private fbdb: AngularFirestore) { }
 
   ngOnInit() {
     this.passedId = this.navParams.get('custom_id');
+
   }
 
   changeListener(event) {
@@ -70,7 +72,7 @@ export class ModalpagePage implements OnInit {
       var newDate = new Date(Date.parse(Date()));
       var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
       var sos = new SOS();
-      sos.InitializeSOSRecord(headline, newDate,this.email,mapURL);
+      sos.InitializeSOSRecord(headline, newDate,this.email,this.msg,mapURL);
       docRef.set(Object.assign({},sos));
       alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.");
     }

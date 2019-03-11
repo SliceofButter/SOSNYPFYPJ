@@ -9,13 +9,15 @@ export class SOS{
     currentDate; //date
     adminNo; //student's admin no
     mapURL;
+    desc;
 
 
     //constructor
-    InitializeSOSRecord(headline, currentDate, adminNo, mapURL){
+    InitializeSOSRecord(headline, currentDate, adminNo, desc, mapURL){
         this.headline = headline;
         this.currentDate = currentDate;
         this.adminNo = adminNo;
+        this.desc = desc;
         this.mapURL = mapURL;
     }
 

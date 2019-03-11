@@ -57,7 +57,7 @@ this.getSomeText();
    }
 
 
-  onfileChanged(event)
+  /*onfileChanged(event)
   {
     const file = event.target.files[0];
   }
@@ -109,6 +109,7 @@ this.getSomeText();
       }
     }
   }
+  */
 
   ionViewWillEnter() {
     //call method to check if user is authenticated upon loading this page
@@ -132,7 +133,7 @@ this.getSomeText();
 
 
   //core function to get user current location via browser since this is a PWA app.
-  getCurrentLocation() {
+ /* getCurrentLocation() {
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -169,6 +170,7 @@ this.getSomeText();
       );
     };
   }
+  */
 
 
 }
