@@ -10,15 +10,17 @@ export class SOS{
     adminNo; //student's admin no
     mapURL;
     desc;
+    imageURL;
 
 
     //constructor
-    InitializeSOSRecord(headline, currentDate, adminNo, desc, mapURL){
+    InitializeSOSRecord(headline, currentDate, adminNo, desc, mapURL, imageURL){
         this.headline = headline;
         this.currentDate = currentDate;
         this.adminNo = adminNo;
         this.desc = desc;
         this.mapURL = mapURL;
+        this.imageURL = imageURL;
     }
 
 }

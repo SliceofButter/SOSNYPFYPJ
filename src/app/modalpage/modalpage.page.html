@@ -6,13 +6,13 @@
 
 <ion-content padding>
 
-  My Id is {{ passedId}}
+  My Id is {{passedId}}
   <input #inputcamera type="file"(change)="changeListener($event)"  />
   <ion-item>
       <ion-label floating>Description</ion-label>
       <ion-textarea [(ngModel)]="msg"></ion-textarea>
     </ion-item>
-  <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "getCurrentLocation()">
+  <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "onUpload()">
       Send Help
     </ion-button>
   <ion-footer>

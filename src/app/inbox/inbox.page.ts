@@ -4,6 +4,7 @@ import { DbserviceService } from '../services/dbservice.service';
 import { Observable } from 'rxjs';
 import { tap } from '../../../node_modules/rxjs/operators';
 import { SOS } from '../classes/sos';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-inbox',
@@ -16,7 +17,8 @@ export class InboxPage implements OnInit {
    messagesList: SOS[] = [];
    lazyList: SOS[] = [];
    pageLimit = 5;
-  constructor(private dbService: DbserviceService) { }
+   someTextUrl;
+  constructor(private dbService: DbserviceService) { this.getSomeText();}
 
   ngOnInit() {
     
@@ -26,6 +28,12 @@ export class InboxPage implements OnInit {
     this.RetrieveAllMessages();
   }
 
+  getSomeText(){
+    console.log(firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL().then(response => this.someTextUrl = response))
+    firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL()
+    .then(response => this.someTextUrl = response)
+    .catch(error => console.log('error', error))
+   }
 
   RetrieveAllMessages(){
     console.log("retrievev12");

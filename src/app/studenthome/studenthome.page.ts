@@ -25,9 +25,9 @@ export class StudenthomePage implements OnInit {
   db: any;
   ref: any;
   task: any;
-  someTextUrl;
+ // someTextUrl;
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService, private storage: Storage, private fbdb: AngularFirestore, private fcm: FcmService, private afStorage: AngularFireStorage,private modalController: ModalController) {
-this.getSomeText();
+//this.getSomeText();
   }
 
 
@@ -49,12 +49,12 @@ this.getSomeText();
     modal.present();
   }
 
-  getSomeText(){
-    console.log(firebase.storage().ref().child('112nbemjzhw').getDownloadURL().then(response => this.someTextUrl = response))
-    firebase.storage().ref().child('112nbemjzhw').getDownloadURL()
-    .then(response => this.someTextUrl = response)
-    .catch(error => console.log('error', error))
-   }
+  //getSomeText(){
+    //console.log(firebase.storage().ref().child('112nbemjzhw').getDownloadURL().then(response => this.someTextUrl = response))
+    //firebase.storage().ref().child('112nbemjzhw').getDownloadURL()
+   // .then(response => this.someTextUrl = response)
+   // .catch(error => console.log('error', error))
+  // }
 
 
   /*onfileChanged(event)
