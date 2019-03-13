@@ -18,8 +18,9 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { ModalpagePage } from './modalpage/modalpage.page';
+import {TutorialPage} from './tutorial/tutorial.page'
 import { ModalpagePageModule } from './modalpage/modalpage.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 var firebaseConfig = 
@@ -39,6 +40,7 @@ var firebaseConfig =
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    BrowserAnimationsModule,
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),

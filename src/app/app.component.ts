@@ -94,10 +94,30 @@ export class AppComponent {
                   title: 'Logout',
                   url: '/logout',
                   icon: 'log-out'
+                },
+                {
+                  title: 'Home',
+                  url: '/studenthome',
+                  icon: 'home'
+                },
+                {
+                  title: 'Disclaimer',
+                  url: '/disclaimer',
+                  icon: 'alert'
                 }
               ];
-              this.router.navigate(['studenthome']);
-            }
+
+              this.storage.get("tutorialShown").then( result => {
+                if(!result)
+                {
+                  this.storage.set("tutorialShown", true);
+                  this.router.navigate(['tutorial']);
+                }
+                else{
+                  this.router.navigate(['studenthome'])
+                }
+            })
+          }
           });
           //this.router.navigate(['adminhome', 'studenthome']);
         } else {
