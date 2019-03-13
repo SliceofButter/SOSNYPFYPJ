@@ -91,17 +91,30 @@ export class ModalpagePage implements OnInit {
           day: "numeric", month: "long", year: "numeric",
           hour: "2-digit", minute: "2-digit"
       };
-      
-      let randomstringpassed: string =randomthingy.toString();
+      let imageURL: string;
+      let randomstringpassed: string =randomthingy;
       console.log(randomstringpassed);
-      var imageURL= firebase.storage().ref().child("randomstringpassed").getDownloadURL();
       var currentDateTime = new Date().toLocaleDateString('en-SG',options);
       var newDate = new Date(Date.parse(Date()));
       var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
-      var sos = new SOS();
-      sos.InitializeSOSRecord(headline, newDate,this.email,this.msg,mapURL, imageURL);
+      var localemail = this.email
+      var localmessage = this.msg
+      firebase.storage().ref().child(randomstringpassed.toString()).getDownloadURL().then(function(url){
+        imageURL=url;
+        console.log(imageURL)
+        console.log(localemail)
+        console.log(localmessage)
+        var sos = new SOS();
+        
+      sos.InitializeSOSRecord(headline, newDate,localemail,localmessage,mapURL, imageURL);
       docRef.set(Object.assign({},sos));
-      alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.");
+      alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
+      });
+      
+      
+              
+      
+      
     }
   }
   }
@@ -119,7 +132,7 @@ export class ModalpagePage implements OnInit {
       this.email = String(arrayOfResults[0]);
     });
   }
-  getCurrentLocation(randomstring) {
+  getCurrentLocation(randomstring: string) {
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,

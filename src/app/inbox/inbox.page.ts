@@ -18,7 +18,7 @@ export class InboxPage implements OnInit {
    lazyList: SOS[] = [];
    pageLimit = 5;
    someTextUrl;
-  constructor(private dbService: DbserviceService) { this.getSomeText();}
+  constructor(private dbService: DbserviceService) { }
 
   ngOnInit() {
     
@@ -28,12 +28,12 @@ export class InboxPage implements OnInit {
     this.RetrieveAllMessages();
   }
 
-  getSomeText(){
-    console.log(firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL().then(response => this.someTextUrl = response))
-    firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL()
-    .then(response => this.someTextUrl = response)
-    .catch(error => console.log('error', error))
-   }
+  //getSomeText(){
+   // console.log(firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL().then(response => this.someTextUrl = response))
+   // firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL()
+   // .then(response => this.someTextUrl = response)
+   // .catch(error => console.log('error', error))
+  // }
 
   RetrieveAllMessages(){
     console.log("retrievev12");
