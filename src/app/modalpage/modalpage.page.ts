@@ -38,6 +38,10 @@ export class ModalpagePage implements OnInit {
     this.file = event.target.files[0];
     console.log(this.file)
   }
+  test()
+  {
+    setTimeout(() => { alert("Test")}, 6000);
+  }
 
  onUpload()
   {
@@ -53,22 +57,11 @@ export class ModalpagePage implements OnInit {
       var task = ref.put(this.file).then(function(snapshot)
       {
         console.log("Uploaded a blob or file");
-        taskdone=taskdone+1;
-
       });
       setTimeout(() => {
-        console.log("Waiting")
-        console.log(taskdone);
-        if(taskdone > 0)
-        {
-          console.log("Random ID is SENT from onupload");
           this.getCurrentLocation(randomId);
-        }
-        else
-        {
-          console.log("Photo still uploading.");
-        }
-      }, 6000);
+
+      }, 9000);
 
 
       
@@ -99,6 +92,7 @@ export class ModalpagePage implements OnInit {
       var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
       var localemail = this.email
       var localmessage = this.msg
+      var mode = this.modalController
       firebase.storage().ref().child(randomstringpassed.toString()).getDownloadURL().then(function(url){
         imageURL=url;
         console.log(imageURL)
@@ -109,6 +103,7 @@ export class ModalpagePage implements OnInit {
       sos.InitializeSOSRecord(headline, newDate,localemail,localmessage,mapURL, imageURL);
       docRef.set(Object.assign({},sos));
       alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
+      mode.dismiss();
       });
       
       
