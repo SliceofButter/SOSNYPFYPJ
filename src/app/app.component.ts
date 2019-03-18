@@ -106,17 +106,7 @@ export class AppComponent {
                   icon: 'alert'
                 }
               ];
-
-              this.storage.get("tutorialShown").then( result => {
-                if(!result)
-                {
-                  this.storage.set("tutorialShown", true);
-                  this.router.navigate(['tutorial']);
-                }
-                else{
                   this.router.navigate(['studenthome'])
-                }
-            })
           }
           });
           //this.router.navigate(['adminhome', 'studenthome']);

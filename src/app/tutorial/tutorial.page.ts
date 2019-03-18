@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, IonSlides} from '@ionic/angular'
 import { StudenthomePage } from '../studenthome/studenthome.page';
+import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { trigger, transition, style, state, animate, keyframes} from '@angular/animations'
 
@@ -33,14 +34,15 @@ export class TutorialPage implements OnInit {
   skipMsg: string = "Skip";
   state: string = 'x';
 
-  constructor(public navCtrl: NavController, public router: Router) { }
+  constructor(public navCtrl: NavController, public router: Router, public storage: Storage) { }
 
   
 
   ngOnInit() {
   }
 
-  skip() {
+  async skip() {
+    await this.storage.set('tutorialComplete', true);
     this.router.navigateByUrl('/studenthome')
   }
 
