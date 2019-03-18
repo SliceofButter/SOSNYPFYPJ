@@ -53,7 +53,7 @@ export class AppComponent {
       //this auth service will validate whether the user has logged in for all the pages in the app
       this.authenticationService.authenticationState.subscribe(state => {
         if (state) {
-          var promise = this.storage.get('email');
+          var promise = this.storage.get('logged');
           Promise.all([promise]).then((arrayOfResults) => { //to test whether is the cause of redirecting multiple times for admin
             console.log(arrayOfResults[0]);
             this.email = String(arrayOfResults[0]);

@@ -3,6 +3,8 @@ import { CognitoServiceService } from "../../app/cognito-service.service";
 import {MenuController} from "@ionic/angular";
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { LoadingController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +12,65 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  public appPages = [];
   email: string;
   password: string;
-  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private router: Router,private authService: AuthenticationService) { }
+  public loginForm: FormGroup;
+  public loading: HTMLIonLoadingElement;
+  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder) { 
+    this.loginForm = this.formBuilder.group({
+      email: ['',
+        Validators.compose([Validators.required, Validators.email])],
+      password: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(6)]),
+      ],
+    });
+  }
 
   ngOnInit() {
   }
 
+  async loginUser(loginForm: FormGroup): Promise<void> {
+    if (!loginForm.valid) {
+      console.log('Form is not valid yet, current value:', loginForm.value);
+    } else {
+      this.loading = await this.loadingCtrl.create();
+      await this.loading.present();
+  
+      const email = loginForm.value.email;
+      const password = loginForm.value.password;
+  
+      this.authService.loginUser(email, password).then(
+        () => {
+          this.loading.dismiss().then(() => {
+            if(email.substring(7,25) == "@mymail.nyp.edu.sg")
+            {
+                  this.router.navigate(['studenthome'])
+            }
+            else if(email.substring(8) == "@test.nyp.edu.sg")
+            {
+
+            this.router.navigate(['adminhome']);
+            }
+            else
+            {
+              alert("This is an invalid account")
+            }
+          });
+        },
+        error => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }],
+            });
+            await alert.present();
+          });
+        }
+      );
+    }
+  }
   ionViewWillEnter() {
     //disables sidemenu on login page
     this.menuCtrl.enable(false);
