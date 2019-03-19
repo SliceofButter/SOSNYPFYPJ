@@ -77,7 +77,6 @@ export class ModalpagePage implements OnInit {
       if (lat != "" || lng != "") {
 
         //actual message by student
-        const headline = "Emergency help requested from " + this.email;
         
         //date options
         let options: Intl.DateTimeFormatOptions = {
@@ -94,7 +93,7 @@ export class ModalpagePage implements OnInit {
       console.log(arrayOfResults[0]);
       this.email = String(arrayOfResults[0]);
       console.log(this.email + " 2")
-    
+      const headline = "Emergency help requested from " + this.email;
       var localemail = this.email
       var localmessage = this.msg
       var mode = this.modalController
