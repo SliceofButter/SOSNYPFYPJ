@@ -4,6 +4,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { TutorialGuard } from './guards/tutorial.guard';
 import { AuthGuard } from './services/user/auth.guard';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -25,8 +26,9 @@ const routes: Routes = [
   { path: 'inbox', loadChildren: './inbox/inbox.module#InboxPageModule' },
   { path: 'modalpage', loadChildren: './modalpage/modalpage.module#ModalpagePageModule' },
   { path: 'tutorial', loadChildren: './tutorial/tutorial.module#TutorialPageModule' },
-  { path: 'disclaimer', loadChildren: './disclaimer/disclaimer.module#DisclaimerPageModule' },  { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' }
-
+  { path: 'disclaimer', loadChildren: './disclaimer/disclaimer.module#DisclaimerPageModule' },
+  { path: 'forgetpassword', loadChildren: './forgetpassword/forgetpassword.module#ForgetpasswordPageModule' }
+  { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' }
 
 ];
 
