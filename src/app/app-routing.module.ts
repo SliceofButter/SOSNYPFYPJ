@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'studenthome', /*canActivate: [TutorialGuard]*/canActivate: [AuthGuard] , loadChildren: './studenthome/studenthome.module#StudenthomePageModule' },
+  { path: 'studenthome', canActivate: [TutorialGuard,AuthGuard] , loadChildren: './studenthome/studenthome.module#StudenthomePageModule' },
   { path: 'adminhome', /*canActivate: [AuthGuardService]*/ canActivate: [AuthGuard], loadChildren: './adminhome/adminhome.module#AdminhomePageModule' },
   { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' },
   { path: 'inbox', loadChildren: './inbox/inbox.module#InboxPageModule' },

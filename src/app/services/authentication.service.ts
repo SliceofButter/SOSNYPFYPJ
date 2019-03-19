@@ -16,7 +16,10 @@ const EMAIL = 'email';
 export class AuthenticationService {
   loginUser(email:string, password:string): Promise<firebase.auth.UserCredential>
   {
-    this.storage.set("logged", email)
+    
+     this.storage.set("logged", email).then(() => {
+      this.authenticationState.next(true);
+    });
     return firebase.auth().signInWithEmailAndPassword(email, password);
 
   }
