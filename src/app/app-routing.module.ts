@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: 'inbox', loadChildren: './inbox/inbox.module#InboxPageModule' },
   { path: 'modalpage', loadChildren: './modalpage/modalpage.module#ModalpagePageModule' },
   { path: 'tutorial', loadChildren: './tutorial/tutorial.module#TutorialPageModule' },
-  { path: 'disclaimer', loadChildren: './disclaimer/disclaimer.module#DisclaimerPageModule' }
+  { path: 'disclaimer', loadChildren: './disclaimer/disclaimer.module#DisclaimerPageModule' },  { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' }
+
 
 ];
 
