@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-
-  My Id is {{passedId}}
+<ion-label>Take a picture of your surroundings</ion-label>
+<br />
+<br />
   <input #inputcamera type="file"(change)="changeListener($event)"  />
   <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-textarea [(ngModel)]="msg"></ion-textarea>
+      <ion-textarea placeholder="Enter a short description of the incident" [(ngModel)]="msg"></ion-textarea>
     </ion-item>
   <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "onUpload()">
       Send Help

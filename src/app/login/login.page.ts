@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
+import { ForgetPasswordPage} from '../forgetpassword/forgetpassword.page';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginPage implements OnInit {
   password: string;
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
-  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder) { 
+  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder,private modalController: ModalController) { 
     this.loginForm = this.formBuilder.group({
       email: ['',
         Validators.compose([Validators.required, Validators.email])],
@@ -101,6 +103,16 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/login']);
       }
     });
+  }
+
+  async openModal()
+  {
+    const modal = await this.modalController.create({
+      component:ForgetPasswordPage,
+      componentProps: {
+      }
+    });
+    modal.present();
   }
   login(){
     this.CognitoService.authenticate(this.email, this.password)
