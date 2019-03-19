@@ -89,10 +89,16 @@ export class ModalpagePage implements OnInit {
       console.log(randomstringpassed);
       var currentDateTime = new Date().toLocaleDateString('en-SG',options);
       var newDate = new Date(Date.parse(Date()));
-      var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
+      var testing = this.storage.get('logged');
+    Promise.all([testing]).then((arrayOfResults) => {
+      console.log(arrayOfResults[0]);
+      this.email = String(arrayOfResults[0]);
+      console.log(this.email + " 2")
+    
       var localemail = this.email
       var localmessage = this.msg
       var mode = this.modalController
+      var docRef = this.fbdb.collection('sos').doc(localemail+'_'+currentDateTime);
       firebase.storage().ref().child(randomstringpassed.toString()).getDownloadURL().then(function(url){
         imageURL=url;
         console.log(imageURL)
@@ -105,13 +111,16 @@ export class ModalpagePage implements OnInit {
       alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
       mode.dismiss();
       });
+    });
       
       
               
       
       
     }
+    
   }
+  
   }
   ionViewWillEnter() {
     //call method to check if user is authenticated upon loading this page

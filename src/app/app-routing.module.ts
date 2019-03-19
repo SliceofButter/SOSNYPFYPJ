@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'modalpage', loadChildren: './modalpage/modalpage.module#ModalpagePageModule' },
   { path: 'tutorial', loadChildren: './tutorial/tutorial.module#TutorialPageModule' },
   { path: 'disclaimer', loadChildren: './disclaimer/disclaimer.module#DisclaimerPageModule' },
-  { path: 'forgetpassword', loadChildren: './forgetpassword/forgetpassword.module#ForgetpasswordPageModule' }
+  { path: 'forgetpassword', loadChildren: './forgetpassword/forgetpassword.module#ForgetpasswordPageModule' },
   { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' }
 
 ];
