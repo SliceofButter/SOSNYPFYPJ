@@ -112,11 +112,6 @@ export class ModalpagePage implements OnInit {
       mode.dismiss();
       });
     });
-      
-      
-              
-      
-      
     }
     
   }
