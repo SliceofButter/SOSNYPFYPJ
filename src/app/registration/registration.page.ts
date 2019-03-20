@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {MenuController} from "@ionic/angular";
 import { LoadingController, AlertController } from '@ionic/angular';
 
 @Component({
@@ -13,6 +14,7 @@ export class RegistrationPage implements OnInit {
   public signupForm: FormGroup;
   public loading: any;
   constructor(
+    public menuCtrl: MenuController,
     private authService: AuthenticationService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
@@ -29,6 +31,11 @@ export class RegistrationPage implements OnInit {
         Validators.compose([Validators.minLength(6), Validators.required]),
       ],
     });
+  }
+
+  ionViewWillEnter() {
+    //disables sidemenu on login page
+    this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
