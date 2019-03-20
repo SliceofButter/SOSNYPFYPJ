@@ -25,6 +25,7 @@ export class ProfileregPage implements OnInit {
   constructor(private router: Router,private authService: AuthenticationService, private afDatabase: AngularFirestore, private storage:Storage) { }
 
   ngOnInit() {
+    console.log("working1")
   }
 
   registerProfile(){
