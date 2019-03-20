@@ -28,7 +28,8 @@ const routes: Routes = [
   { path: 'tutorial', loadChildren: './tutorial/tutorial.module#TutorialPageModule' },
   { path: 'disclaimer', loadChildren: './disclaimer/disclaimer.module#DisclaimerPageModule' },
   { path: 'forgetpassword', loadChildren: './forgetpassword/forgetpassword.module#ForgetpasswordPageModule' },
-  { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' }
+  { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' },  { path: 'profilereg', loadChildren: './profilereg/profilereg.module#ProfileregPageModule' }
+
 
 ];
 

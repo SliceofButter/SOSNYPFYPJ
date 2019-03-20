@@ -36,6 +36,7 @@ export class StudenthomePage implements OnInit {
     // this.route.params.subscribe(data => {
     //   this.email = data;
     // });
+    console.log(firebase.auth().currentUser.uid)
   }
 
   async openModal()
@@ -47,6 +48,7 @@ export class StudenthomePage implements OnInit {
       }
     });
     modal.present();
+    
   }
 
   //getSomeText(){

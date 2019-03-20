@@ -28,7 +28,6 @@ export class RegistrationPage implements OnInit {
         '',
         Validators.compose([Validators.minLength(6), Validators.required]),
       ],
-
     });
   }
 
@@ -46,7 +45,7 @@ export class RegistrationPage implements OnInit {
       this.authService.signupUser(email, password).then(
         () => {
           this.loading.dismiss().then(() => {
-            this.router.navigateByUrl('home');
+            this.router.navigateByUrl('profilereg');
           });
         },
         error => {

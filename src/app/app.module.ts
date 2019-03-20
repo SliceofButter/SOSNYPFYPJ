@@ -18,6 +18,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {TutorialPage} from './tutorial/tutorial.page'
 import { ModalpagePageModule } from './modalpage/modalpage.module';
 import { ForgetPasswordPageModule } from './forgetpassword/forgetpassword.module';
@@ -51,6 +52,7 @@ var firebaseConfig =
     AngularFireStorageModule,
     ModalpagePageModule,
     ForgetPasswordPageModule,
+    AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

@@ -32,12 +32,14 @@ export class AuthenticationService {
           .firestore()
           .doc(`/userProfile/${newUserCredential.user.uid}`)
           .set({ email });
+          this.storage.set("new",newUserCredential.user.uid)
       })
       .catch(error => {
         console.error(error);
         throw new Error(error);
       });
   }
+
   resetPassword(email:string): Promise<void> {
     return firebase.auth().sendPasswordResetEmail(email);
   }

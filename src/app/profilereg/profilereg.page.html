@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profilereg</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+  <ion-label>Name</ion-label>
+  <ion-input [(ngModel)]="name"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Admin Number</ion-label>
+  <ion-input [(ngModel)]="profile.adminnumber"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>School</ion-label>
+  <ion-input [(ngModel)]="profile.school"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Course</ion-label>
+  <ion-input [(ngModel)]="profile.course"></ion-input>
+</ion-item>
+<ion-button
+expand="block"
+(click)="registerProfile()"
+>
+Create an Account
+</ion-button>
+</ion-content>
