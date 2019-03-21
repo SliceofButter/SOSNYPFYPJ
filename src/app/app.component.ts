@@ -105,6 +105,12 @@ export class AppComponent {
                   url: '/disclaimer',
                   icon: 'alert'
                 }
+                ,
+                {
+                  title: 'Profile',
+                  url: '/profile',
+                  icon: 'person'
+                }
               ];
                   this.router.navigate(['studenthome'])
           }

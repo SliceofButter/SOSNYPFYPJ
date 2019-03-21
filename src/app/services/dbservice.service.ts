@@ -64,5 +64,10 @@ export class DbserviceService {
     return this.fbdb.collection('sos');
   }
 
+  RetrieveAllUsers():AngularFirestoreCollection<any>
+  {
+    return this.fbdb.collection('userProfile')
+  }
+
 
 }

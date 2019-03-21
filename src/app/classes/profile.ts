@@ -1,6 +1,7 @@
 export interface Profile{
     name: string;
-    adminnumber: string;
+    adminNo: string;
     school: string;
     course: string;
+    photoURL: string;
 }

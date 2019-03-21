@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>PROFILE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="user |async">
+  <ion-card-content>
+      <ion-avatar class="avatars">
+          <ion-img src="{{photoURL}}"></ion-img>
+        </ion-avatar>
+    <ion-card-title id="test" text-center >
+      {{name}}
+    </ion-card-title>
+    <p text-center>
+      {{adminnumber}}
+    </p>
+    <p text-center>
+        {{school}}
+    </p>
+
+    <p text-center>
+        {{course}}
+    </p>
+
+    <input #inputcamera type="file"(change)="changeListener($event)"  />
+    <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "upload()">
+      Change Profile Picture
+    </ion-button>
+  </ion-card-content>
+</ion-card>
+</ion-content>
