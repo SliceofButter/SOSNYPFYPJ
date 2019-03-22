@@ -6,6 +6,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { NavController, ModalController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 import { ForgetPasswordPage} from '../forgetpassword/forgetpassword.page';
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginPage implements OnInit {
   password: string;
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
-  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder,private modalController: ModalController) { 
+  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private storage:Storage,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder,private modalController: ModalController) { 
     this.loginForm = this.formBuilder.group({
       email: ['',
         Validators.compose([Validators.required, Validators.email])],
@@ -31,6 +32,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log("testing new function3")
   }
 
   async loginUser(loginForm: FormGroup): Promise<void> {
@@ -46,13 +48,18 @@ export class LoginPage implements OnInit {
       this.authService.loginUser(email, password).then(
         () => {
           this.loading.dismiss().then(() => {
-            if(email.substring(7,25) == "@mymail.nyp.edu.sg")
+            if(email.substring(7,25) === "@mymail.nyp.edu.sg")
             {
+              this.storage.set("logged", email).then(() => {
+                this.authService.authenticationState.next(true);
+              });
                   this.router.navigate(['studenthome'])
             }
             else if(email.substring(8) == "@test.nyp.edu.sg")
             {
-
+              this.storage.set("logged", email).then(() => {
+                this.authService.authenticationState.next(true);
+              });
             this.router.navigate(['adminhome']);
             }
             else

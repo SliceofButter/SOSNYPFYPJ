@@ -32,7 +32,7 @@ export class ProfilePage implements OnInit {
       this.course = res.course;
       if(res.photoURL == null)
       {
-       this.photoURL = "https://personagenerator.com/user-blank.png"
+       this.photoURL = "../../assets/img/user.png"
       }
       else
       {
