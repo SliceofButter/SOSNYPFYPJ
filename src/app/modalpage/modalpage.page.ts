@@ -29,7 +29,7 @@ export class ModalpagePage implements OnInit {
    }
 
   ngOnInit() {
-    this.passedId = this.navParams.get('custom_id');
+    console.log("Testing new version2?")
 
   }
   
@@ -61,7 +61,7 @@ export class ModalpagePage implements OnInit {
       setTimeout(() => {
           this.getCurrentLocation(randomId);
 
-      }, 2000);
+      }, 4000);
 
 
       
@@ -103,11 +103,19 @@ export class ModalpagePage implements OnInit {
         console.log(imageURL)
         console.log(localemail)
         console.log(localmessage)
-        var sos = new SOS();
+        //var sos = new SOS();
         
-      sos.InitializeSOSRecord(headline, newDate,localemail,localmessage,mapURL, imageURL);
-      docRef.set(Object.assign({},sos));
-      alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
+      //sos.InitializeSOSRecord(headline, newDate,localemail,localmessage,mapURL, imageURL);
+      docRef.set({
+        adminNo: localemail,
+        currentDate: newDate,
+        desc: localmessage,
+        headline: headline,
+        imageURL: imageURL,
+        mapURL: mapURL
+      })
+      //alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
+      console.log(docRef)
       mode.dismiss();
       });
     });
