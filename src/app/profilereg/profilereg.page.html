@@ -15,11 +15,22 @@
 </ion-item>
 <ion-item>
   <ion-label>School</ion-label>
-  <ion-input [(ngModel)]="school"></ion-input>
+  <ion-input>
+      <ion-select [(ngModel)]="school">
+          <ion-select-option value="SIT">School of Information Technology</ion-select-option>
+          <ion-select-option value="SBM">School of Business</ion-select-option>
+          <ion-select-option value="SHS">School of Health Science</ion-select-option>
+          <ion-select-option value="SIDM">School of Interactive and Digital Media</ion-select-option>
+          <ion-select-option value="SEG">School of Engineering</ion-select-option>
+          <ion-select-option value="SDN">School of Design</ion-select-option>
+          </ion-select>
+  </ion-input>
 </ion-item>
 <ion-item>
   <ion-label>Course</ion-label>
-  <ion-input [(ngModel)]="course"></ion-input>
+  <ion-input [(ngModel)]="course">
+
+  </ion-input>
 </ion-item>
 <ion-button
 expand="block"

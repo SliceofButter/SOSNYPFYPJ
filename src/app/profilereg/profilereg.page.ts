@@ -9,29 +9,31 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 
 
+
+
 @Component({
   selector: 'app-profilereg',
   templateUrl: './profilereg.page.html',
   styleUrls: ['./profilereg.page.scss'],
 })
 export class ProfileregPage implements OnInit {
-  name:string
-  adminNo: string
-  school: string
-  course: string
+  name:string;
+  adminNo: string;
+  school: any;
+  course: string;
   profile = {} as Profile;
   uid;
 
   constructor(private router: Router,private authService: AuthenticationService, private afDatabase: AngularFirestore, private storage:Storage) { }
 
   ngOnInit() {
-    console.log("working1")
+    console.log("New one")
   }
 
   registerProfile(){
     var name1 = this.name
     var admin = this.adminNo
-    var school1 = this.school
+    var school1 = this.school;
     var course1 = this.course
     var newUserCredential = this.storage.get("new")
     Promise.all([newUserCredential]).then((arrayOfResults) => {
