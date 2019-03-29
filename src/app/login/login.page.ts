@@ -18,6 +18,7 @@ export class LoginPage implements OnInit {
   public appPages = [];
   email: string;
   password: string;
+  countries:any;
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
   constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private storage:Storage,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder,private modalController: ModalController) { 
@@ -32,7 +33,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("testing new function3")
+    console.log("Testing 9")
   }
 
   async loginUser(loginForm: FormGroup): Promise<void> {
