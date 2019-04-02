@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>picupload</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <input #inputcamera type="file"(change)="changeListener($event)"  />
+  <img *ngIf="img1" [src]="img1"/>
+    <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "upload()">
+      Change Profile Picture
+    </ion-button>
+</ion-content>

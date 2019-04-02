@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -23,7 +24,8 @@ import {TutorialPage} from './tutorial/tutorial.page'
 import { ModalpagePageModule } from './modalpage/modalpage.module';
 import { ForgetPasswordPageModule } from './forgetpassword/forgetpassword.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { PicuploadPageModule } from './picupload/picupload.module'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 
 var firebaseConfig = 
@@ -53,10 +55,10 @@ var firebaseConfig =
     AngularFireStorageModule,
     ModalpagePageModule,
     ForgetPasswordPageModule,
+    PicuploadPageModule,
     AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgbModule.forRoot(),
-    NgbModalModule
+    NgbModule
   ],
   providers: [
     StatusBar,

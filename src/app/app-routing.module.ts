@@ -30,7 +30,8 @@ const routes: Routes = [
   { path: 'forgetpassword', loadChildren: './forgetpassword/forgetpassword.module#ForgetpasswordPageModule' },
   { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' },
   { path: 'profilereg', loadChildren: './profilereg/profilereg.module#ProfileregPageModule' },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' }
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },  { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' }
+
 
 
 ];

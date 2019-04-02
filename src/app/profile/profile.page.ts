@@ -5,6 +5,8 @@ import { AngularFirestore, AngularFirestoreCollection,AngularFirestoreDocument }
 import { DbserviceService } from '../services/dbservice.service';
 import { Profile } from '../classes/profile';
 import { timeout } from 'q';
+import { PicuploadPage} from '../picupload/picupload.page'
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +23,7 @@ export class ProfilePage implements OnInit {
   photoURL;
   file: File;
 
-  constructor(private dbService: DbserviceService, private fbdb: AngularFirestore) {
+  constructor(private dbService: DbserviceService, private fbdb: AngularFirestore,private modalController: ModalController) {
     var userID = firebase.auth().currentUser.uid
     this.userList =this.fbdb.collection('userProfile').doc<Profile>(userID)
     this.user = this.userList.valueChanges()
@@ -49,36 +51,17 @@ export class ProfilePage implements OnInit {
     console.log("1 New Pic?")
   }
 
-  changeListener(event) {
-    this.file = event.target.files[0];
-    console.log(this.file)
+
+  async openModal()
+  {
+    const modal = await this.modalController.create({
+      component: PicuploadPage,
+      componentProps: {
+      }
+    });
+    modal.present();
+    
   }
-
-  upload(){
-    console.log(this.file)
-    var reader = new FileReader();
-    var userID = firebase.auth().currentUser.uid
-    var ref = firebase.storage().ref().child(userID)
-    var task = ref.put(this.file).then(function(snapshot)
-      {
-        console.log("Uploaded a file")
-      });
-      this.timeout() //path in firebase storage
-}
-
-timeout(){
-  setTimeout(() => {
-    var userID = firebase.auth().currentUser.uid
-    firebase.storage().ref().child(userID).getDownloadURL().then(function(url){
-      console.log("the URL Image is: " + url);
-      url;
-      let photoURL = this.url
-      let imageURL = url
-    return imageURL
-  }).then((imageURL) => {
-    this.fbdb.doc(`userProfile/${userID}`).update({photoURL:imageURL})  })// save url in Firestore database realtime
-  },2000);
-}
 
 
   
