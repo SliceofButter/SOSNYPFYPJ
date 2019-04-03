@@ -24,27 +24,25 @@ export class Tab2Page implements OnInit {
   constructor(private dbService: DbserviceService, private fbdb: AngularFirestore) { }
 
   ngOnInit() {
+    this.RetrieveAllMessages();
   }
 
   ionViewWillEnter(){
-    this.RetrieveAllMessages();
+    //this.RetrieveAllMessages();
 
   }
 
   RetrieveAllMessages(){
     console.log("retrievev12");
-    // this.dbService.RetrieveAllMessages().then(data => {
-    //   console.log(JSON.stringify(data));
-      
-    // });
-    
-    // this.dbService.RetrieveAllMessages()
-    // .subscribe(data => console.log(data));
 
+    
      this.dbService.RetrieveAllMessageA().valueChanges().subscribe((message) => {
       this.messagesList = message;
       this.getMessageArray(this.messagesList);
     })
+  
+ 
+    
     
     
       console.log("Can u please work: ");

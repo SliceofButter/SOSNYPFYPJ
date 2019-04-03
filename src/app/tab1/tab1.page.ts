@@ -25,9 +25,10 @@ export class Tab1Page implements OnInit {
   constructor(private dbService: DbserviceService, private fbdb: AngularFirestore) { }
 
   ngOnInit() {
+    this.RetrieveAllMessages();
   }
   ionViewWillEnter(){
-    this.RetrieveAllMessages();
+    //this.RetrieveAllMessages();
 
   }
 
