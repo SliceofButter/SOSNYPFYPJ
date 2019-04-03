@@ -42,6 +42,25 @@
       <ion-label>Your password needs more than 6 characters.</ion-label>
     </ion-item>
 
+    <ion-item>
+      <ion-label position="stacked">Confirm Password</ion-label>
+      <ion-input
+        formControlName="confirmpassword"
+        type="password"
+        placeholder="Confirm Password"
+        [class.invalid]="!signupForm.controls['confirmpassword'].valid && signupForm.controls['confirmpassword'].touched"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item
+      class="error-message"
+      *ngIf="!signupForm.controls['confirmpassword'].valid  &&
+      signupForm.controls['confirmpassword'].touched"
+    >
+      <ion-label>Password needs to be more than 6 characters</ion-label>
+    </ion-item>
+
+
 
     <ion-button
       expand="block"

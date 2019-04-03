@@ -1,20 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profilereg</ion-title>
+    <ion-title>Register Your Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 <ion-item>
-  <ion-label>Name</ion-label>
+  <ion-label>Name:</ion-label>
   <ion-input [(ngModel)]="name"></ion-input>
 </ion-item>
 <ion-item>
-  <ion-label>Admin Number</ion-label>
+  <ion-label>Admin Number:</ion-label>
   <ion-input [(ngModel)]="adminNo"></ion-input>
 </ion-item>
 <ion-item >
-  <ion-label>School</ion-label>
+  <ion-label id="bomb">School:</ion-label>
   <ion-input>
       <ion-select [(ngModel)]="school" name="school" (ngModelChange)='onSchoolSelected($event)'>
           <ion-select-option value="SIT">School of Information Technology</ion-select-option>
@@ -27,10 +27,11 @@
   </ion-input>
 </ion-item>
 <ion-item>
-  <ion-label>Course</ion-label>
-  <ion-input>
+  <ion-label id="bomb" style="text-overflow: initial !important;
+  overflow: initial !important;">Course:</ion-label>
+  <ion-input id="test">
     <ion-select [(ngModel)]="course">
-<ion-select-option *ngFor = "let studentc of studentcourse" [value]="studentc.name">
+<ion-select-option  *ngFor = "let studentc of studentcourse" [value]="studentc.name">
   {{studentc.name}}
 </ion-select-option>
 </ion-select>

@@ -37,74 +37,74 @@ export class ProfileregPage implements OnInit {
     if(schoolselected == "SIT")
     {
       this.studentcourse =[
-        {name: "Diploma in Infocomm and Security"},
-        {name: "Diploma in Business Intelligence and Analytics"},
-        {name: "Diploma in Information Technology"},
-        {name: "Diploma in Cybersecurity and Forensics"},
-        {name: "Diploma in Business Informatics"},
-        {name: "Diploma in Financial Informatics"}
+        {name: "Infocomm and Security"},
+        {name: "Business Intelligence and Analytics"},
+        {name: "Information Technology"},
+        {name: "Cybersecurity and Forensics"},
+        {name: "Business Informatics"},
+        {name: "Financial Informatics"}
       ];
       console.log(this.studentcourse);
     }
     else if(schoolselected == "SBM")
     {
       this.studentcourse =[
-        {name: "Diploma in Business Management"},
-        {name: "Diploma in Accountancy and Finance"},
-        {name: "Diploma in Banking and Finance"},
-        {name: "Diploma in Food and Beverage Business"},
-        {name: "Diploma in Hospitality and Tourism Mangement"},
-        {name: "Diploma in Marketing"},
-        {name: "Diploma in Mass Media Management"},
-        {name: "Diploma in Sport and Wellness Management"},
-        {name: "Diploma in Common Business Programme"}
+        {name: "Business Management"},
+        {name: "Accountancy and Finance"},
+        {name: "Banking and Finance"},
+        {name: "Food and Beverage Business"},
+        {name: "Hospitality and Tourism Mangement"},
+        {name: "Marketing"},
+        {name: "Mass Media Management"},
+        {name: "Sport and Wellness Management"},
+        {name: "Common Business Programme"}
       ];
     }
     else if(schoolselected == "SHS")
     {
       this.studentcourse =[
-        {name: "Diploma in Nursing"},
-        {name: "Diploma in Oral Health Therapy"},
-        {name: "Diploma in Social Sciences"}
+        {name: "Nursing"},
+        {name: "Oral Health Therapy"},
+        {name: "Social Sciences"}
       ];
     }
     else if(schoolselected == "SIDM")
     {
       this.studentcourse =[
-        {name: "Diploma in Animation"},
-        {name: "Diploma in Digital Game Art and Design"},
-        {name: "Diploma in Digital Visual Effects"},
-        {name: "Diploma in Game Development and Technology"},
-        {name: "Diploma in Interaction Design"},
-        {name: "Diploma in Motion Graphics and Broadcast Design"}
+        {name: "Animation"},
+        {name: "Digital Game Art and Design"},
+        {name: "Digital Visual Effects"},
+        {name: "Game Development and Technology"},
+        {name: "Interaction Design"},
+        {name: "Motion Graphics and Broadcast Design"}
 
       ];
     }
     else if(schoolselected == "SEG")
     {
       this.studentcourse =[
-        {name: "Diploma in Common Engineering"},
-        {name: "Diploma in Aerospace/Electrical/Electronic Programme"},
-        {name: "Diploma in Aerospace/Mechatronics Programme"},
-        {name: "Diploma in Aeronautical and Aerospace Technology"},
-        {name: "Diploma in Aerospace Systems and Management"},
-        {name: "Diploma in Biomedical Engineering"},
-        {name: "Diploma in Digital and Precision Engineering"},
-        {name: "Diploma in Electrical Engineering with Eco-Design"},
-        {name: "Diploma in Electronic Systems"},
-        {name: "Diploma in Engineering with Business"},
-        {name: "Diploma in Multimedia and Infocomm Technology"},
-        {name: "Diploma in Nanotechnology and Materials Science"},
-        {name: "Diploma in Robotics and Mechatronics"}
+        {name: "Common Engineering"},
+        {name: "Aerospace/Electrical/Electronic Programme"},
+        {name: "Aerospace/Mechatronics Programme"},
+        {name: "Aeronautical and Aerospace Technology"},
+        {name: "Aerospace Systems and Management"},
+        {name: "Biomedical Engineering"},
+        {name: "Digital and Precision Engineering"},
+        {name: "Electrical Engineering with Eco-Design"},
+        {name: "Electronic Systems"},
+        {name: "Engineering with Business"},
+        {name: "Multimedia and Infocomm Technology"},
+        {name: "Nanotechnology and Materials Science"},
+        {name: "Robotics and Mechatronics"}
       ];
     }
     else if(schoolselected == "SDN")
     {
       this.studentcourse =[
-        {name: "Diploma in Architecture"},
-        {name: "Diploma in Industrial Design"},
-        {name: "Diploma in Spatial Design"},
-        {name: "Diploma in Visual Communication"}
+        {name: "Architecture"},
+        {name: "Industrial Design"},
+        {name: "Spatial Design"},
+        {name: "Visual Communication"}
       ];
     }
     else
@@ -118,25 +118,48 @@ export class ProfileregPage implements OnInit {
   }
 
   registerProfile(){
-    var name1 = this.name
-    var admin = this.adminNo
-    var school1 = this.school;
-    var course1 = this.course
-    var newUserCredential = this.storage.get("new")
-    Promise.all([newUserCredential]).then((arrayOfResults) => {
-      console.log(arrayOfResults[0]);
-      this.uid = String(arrayOfResults[0]);
-      console.log(name1)
-      console.log("test")
-    firebase.firestore().doc(`/userProfile/` + this.uid).update({
-      name: name1,
-      adminNo: admin,
-      school: school1,
-      course: course1
-    })
-    })
-    this.storage.remove("new")
-    this.router.navigateByUrl('login')
+    if(this.name == null)
+    {
+      alert('Name cannot be empty.');
+    }
+    else if(this.adminNo == null)
+    {
+      alert('Admin number cannot be empty.');
+    }
+    else if(this.school == null)
+    {
+      alert('Please select your school.');
+    }
+    else if(this.course == null)
+    {
+      alert('Please select your course.');
+    }
+    else
+    {
+      
+      var name1 = this.name;
+      var admin = this.adminNo;
+      var school1 = this.school;
+      var course1 = this.course;
+      var newUserCredential = this.storage.get("new")
+      Promise.all([newUserCredential]).then((arrayOfResults) => {
+        console.log(arrayOfResults[0]);
+        this.uid = String(arrayOfResults[0]);
+        console.log(name1)
+        console.log("test")
+      firebase.firestore().doc(`/userProfile/` + this.uid).update({
+        name: name1,
+        adminNo: admin,
+        school: school1,
+        course: course1
+      })
+      })
+      alert('Account sucessfully created.')
+      this.storage.remove("new")
+      this.router.navigateByUrl('login')
+      
+    }
+
   }
 
 }

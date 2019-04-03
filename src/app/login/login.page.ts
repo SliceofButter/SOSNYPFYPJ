@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Testing 9")
+    console.log("Week 5")
   }
 
   async loginUser(loginForm: FormGroup): Promise<void> {

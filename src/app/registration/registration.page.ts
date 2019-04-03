@@ -30,8 +30,14 @@ export class RegistrationPage implements OnInit {
         '',
         Validators.compose([Validators.minLength(6), Validators.required]),
       ],
-    });
+      confirmpassword: [
+        '',
+        Validators.compose([Validators.minLength(6), Validators.required]),
+      ]
+    } );
   }
+
+
 
   ionViewWillEnter() {
     //disables sidemenu on login page
@@ -41,14 +47,18 @@ export class RegistrationPage implements OnInit {
   ngOnInit() {
   }
   async signupUser(signupForm: FormGroup): Promise<void> {
+    const email: string = signupForm.value.email;
+    const password: string = signupForm.value.password;
+    const confirmpassword: string = signupForm.value.confirmpassword;
     if (!signupForm.valid) {
       console.log(
         'Need to complete the form, current value: ', signupForm.value
       );
-    } else {
-      const email: string = signupForm.value.email;
-      const password: string = signupForm.value.password;
-  
+    }
+    else if(password !== confirmpassword){
+      alert('Password does not match please try again.')
+    } 
+    else {
       this.authService.signupUser(email, password).then(
         () => {
           this.loading.dismiss().then(() => {
