@@ -19,7 +19,7 @@ export class AdminhomePage implements OnInit {
     // this.route.params.subscribe(data => {
     //   this.email = data;
     // });
-    console.log("Testing out tabs")
+    console.log("10-Tab")
   }
 
   getPermission() {

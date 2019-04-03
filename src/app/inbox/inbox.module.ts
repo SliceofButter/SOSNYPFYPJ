@@ -10,7 +10,22 @@ import { InboxPage } from './inbox.page';
 const routes: Routes = [
   {
     path: '',
-    component: InboxPage
+    component: InboxPage,
+    children:[
+      { 
+        path: 'tab1',
+         loadChildren: '../tab1/tab1.module#Tab1PageModule' 
+        },
+      {
+         path: 'tab2',
+          loadChildren: '../tab2/tab2.module#Tab2PageModule'
+         },
+    ]
+  },
+  {
+    path: '',
+    redirectTo:'/inbox/tab1',
+    pathMatch: 'full' 
   }
 ];
 

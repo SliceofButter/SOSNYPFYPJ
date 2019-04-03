@@ -32,13 +32,26 @@ export class Tab1Page implements OnInit {
   }
 
 
-  accept(event)
+  accept(message:SOS)
   {
-    for(var i = 0; i< this.messagesList.length; i++)
+    console.log(message.adminNo+"_"+message.UID)
+    var docRef = this.fbdb.collection('attend').doc(message.adminNo+"_"+message.UID)
+    docRef.set({
+      adminNo: message.adminNo,
+      currentDate: message.currentDate,
+      desc: message.desc,
+      headline: message.headline,
+      imageURL: message.imageURL,
+      mapURL: message.mapURL,
+      UID: message.UID,
+      attend:"Attended",
+      attendedwho: firebase.auth().currentUser.email
+    })
+    var docRef2 = this.fbdb.collection('sos').doc(message.adminNo+"_"+message.UID)
+    docRef2.delete()
+
+
     //console.log(this.messagesList[i])
-    console.log(this.messagesList[i].adminNo)
-    var checks = document.querySelectorAll('.options') 
-    console.log(Array.from(this.messagesList).indexOf(this.messagesList[i].adminNo))
     //var work = this.messagesList.indexOf(event.target)
     
     //}

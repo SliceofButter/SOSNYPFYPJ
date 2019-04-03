@@ -1,44 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/firestore';
 import { DbserviceService } from '../services/dbservice.service';
 import { Observable } from 'rxjs';
 import { tap } from '../../../node_modules/rxjs/operators';
 import { SOS } from '../classes/sos';
 import * as firebase from 'firebase';
+import { IonButton } from '@ionic/angular';
+import { Button } from 'protractor';
 
 @Component({
-  selector: 'app-inbox',
-  templateUrl: './inbox.page.html',
-  styleUrls: ['./inbox.page.scss'],
+  selector: 'app-tab2',
+  templateUrl: './tab2.page.html',
+  styleUrls: ['./tab2.page.scss'],
 })
-export class InboxPage implements OnInit {
-
-   messages:Observable<any[]>;
-   messagesList: SOS[] = [];
-   lazyList: SOS[] = [];
-   pageLimit = 5;
-   someTextUrl;
-  constructor(private dbService: DbserviceService) { }
+export class Tab2Page implements OnInit {
+  messages:Observable<any[]>;
+  messagesList: SOS[] = [];
+  lazyList: SOS[] = [];
+  pageLimit = 5;
+  someTextUrl;
+  soslist:AngularFirestoreDocument<SOS>
+  headline: string;
+  constructor(private dbService: DbserviceService, private fbdb: AngularFirestore) { }
 
   ngOnInit() {
-    
-  }
-
-  tab2Selected()
-  {
-    console.log('Tab 2 Selected')
   }
 
   ionViewWillEnter(){
     this.RetrieveAllMessages();
-  }
 
-  //getSomeText(){
-   // console.log(firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL().then(response => this.someTextUrl = response))
-   // firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL()
-   // .then(response => this.someTextUrl = response)
-   // .catch(error => console.log('error', error))
-  // }
+  }
 
   RetrieveAllMessages(){
     console.log("retrievev12");
@@ -50,7 +41,7 @@ export class InboxPage implements OnInit {
     // this.dbService.RetrieveAllMessages()
     // .subscribe(data => console.log(data));
 
-     this.dbService.RetrieveAllMessage().valueChanges().subscribe((message) => {
+     this.dbService.RetrieveAllMessageA().valueChanges().subscribe((message) => {
       this.messagesList = message;
       this.getMessageArray(this.messagesList);
     })
@@ -104,5 +95,7 @@ export class InboxPage implements OnInit {
 
     }, 500);
   }
+
   
+
 }

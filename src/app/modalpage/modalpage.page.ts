@@ -96,8 +96,9 @@ export class ModalpagePage implements OnInit {
       const headline = "Emergency help requested from " + this.email;
       var localemail = this.email
       var localmessage = this.msg
+      var UID = Math.random().toString (36).substring(2);
       var mode = this.modalController
-      var docRef = this.fbdb.collection('sos').doc(localemail+'_'+currentDateTime);
+      var docRef = this.fbdb.collection('sos').doc(localemail+'_'+UID);
       firebase.storage().ref().child(randomstringpassed.toString()).getDownloadURL().then(function(url){
         imageURL=url;
         console.log(imageURL)
@@ -112,7 +113,8 @@ export class ModalpagePage implements OnInit {
         desc: localmessage,
         headline: headline,
         imageURL: imageURL,
-        mapURL: mapURL
+        mapURL: mapURL,
+        UID: UID
       })
       //alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
       console.log(docRef)

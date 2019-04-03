@@ -63,7 +63,10 @@ timeout(){
     this.fbdb.doc(`userProfile/${userID}`).update({photoURL:imageURL})  })// save url in Firestore database realtime
   },2000);
 }
-
+closeModal()
+{
+  this.modal.dismiss();
+}
 
 
 }

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ATTENDED</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let message of lazyList" class="options">
+      <ion-card-header>
+        
+        <ion-card-title >
+          {{ message.adminNo }}
+        </ion-card-title>
+  
+        <ion-card-subtitle>
+          at {{message.currentDate.toDate()  | date:'dd/MM/yyyy h:mm:ss a'}}
+        </ion-card-subtitle>
+  
+      </ion-card-header>
+  
+      <ion-card-content>
+        {{ message.headline }}
+        <br/>
+        Description: {{ message.desc }}
+        <br />
+        Tap this link to view on map: <a href="{{message.mapURL}}" target="_blank">Student's Location</a>
+        <br />
+        <a href={{message.imageURL}} target="_blank">Student's Location Image</a>
+        <br />
+        Attended by : {{message.attendedwho}}
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-infinite-scroll (ionInfinite)="loadMoreMessage($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubble" loadingText="loading message..">
+  
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

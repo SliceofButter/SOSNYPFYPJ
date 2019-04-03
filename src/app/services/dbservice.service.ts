@@ -64,6 +64,15 @@ export class DbserviceService {
     return this.fbdb.collection('sos');
   }
 
+  RetrieveAllMessageA(): AngularFirestoreCollection<any>{
+    // this.messagesList = this.fbdb.collection<any>('sos');
+    // console.log("what is this message list 2");
+    // console.log(this.messagesList);
+    // return this.messagesList;
+    //this.fbdb.collection('sos').ref.orderBy("currentDate", "desc");
+    return this.fbdb.collection('attend');
+  }
+
   RetrieveAllUsers():AngularFirestoreCollection<any>
   {
     return this.fbdb.collection('userProfile')
