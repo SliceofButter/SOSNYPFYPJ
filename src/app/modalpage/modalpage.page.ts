@@ -116,7 +116,7 @@ export class ModalpagePage implements OnInit {
         mapURL: mapURL,
         UID: UID
       })
-      //alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
+      alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
       console.log(docRef)
       mode.dismiss();
       });
