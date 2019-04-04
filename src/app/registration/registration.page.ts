@@ -59,24 +59,31 @@ export class RegistrationPage implements OnInit {
       alert('Password does not match please try again.')
     } 
     else {
-      this.authService.signupUser(email, password).then(
-        () => {
-          this.loading.dismiss().then(() => {
-            this.router.navigateByUrl('profilereg');
-          });
-        },
-        error => {
-          this.loading.dismiss().then(async () => {
-            const alert = await this.alertCtrl.create({
-              message: error.message,
-              buttons: [{ text: 'Ok', role: 'cancel' }],
+      if(email.substring(7,25) === "@mymail.nyp.edu.sg")
+      {
+        this.authService.signupUser(email, password).then(
+          () => {
+            this.loading.dismiss().then(() => {
+              this.router.navigateByUrl('profilereg');
             });
-            await alert.present();
-          });
-        }
-      );
-      this.loading = await this.loadingCtrl.create();
-      await this.loading.present();
+          },
+          error => {
+            this.loading.dismiss().then(async () => {
+              const alert = await this.alertCtrl.create({
+                message: error.message,
+                buttons: [{ text: 'Ok', role: 'cancel' }],
+              });
+              await alert.present();
+            });
+          }
+        );
+        this.loading = await this.loadingCtrl.create();
+        await this.loading.present();
+      }
+      else{
+        alert('Please use the correct email domain.');
+      }
+
     }
   }
 }
