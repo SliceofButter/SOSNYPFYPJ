@@ -28,23 +28,16 @@ export class Tab2Page implements OnInit {
   }
 
   ionViewWillEnter(){
-    //this.RetrieveAllMessages();
 
   }
 
   RetrieveAllMessages(){
     console.log("retrievev12");
-
-    
      this.dbService.RetrieveAllMessageA().valueChanges().subscribe((message) => {
       this.messagesList = message;
       this.getMessageArray(this.messagesList);
     })
-  
- 
-    
-    
-    
+
       console.log("Can u please work: ");
       console.log(this.messages);
 
@@ -53,17 +46,12 @@ export class Tab2Page implements OnInit {
   }
 
   getMessageArray(messages:SOS[]){
-    
-   
 
     this.messagesList = messages.sort((a,b)=> { return +new Date(b.currentDate.seconds).getTime() - +new Date(a.currentDate.seconds).getTime(); });
 
     this.messagesList.slice(0,this.pageLimit).forEach((x)=> {
     this.lazyList.push(x);
     });
-
-    
-   
     console.log("sorted listv4");
     console.log(this.messagesList);
   }

@@ -3,6 +3,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavParams, ModalController } from '@ionic/angular'
 
 @Component({
   selector: 'app-forgetpassword',
@@ -15,7 +16,8 @@ export class ForgetPasswordPage implements OnInit {
     private authService: AuthenticationService,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController
   ) {
     this.resetPasswordForm = this.formBuilder.group({
       email: [
@@ -58,5 +60,9 @@ export class ForgetPasswordPage implements OnInit {
         }
       );
     }
+  }
+  closeModal()
+  {
+    this.modalController.dismiss();
   }
 }

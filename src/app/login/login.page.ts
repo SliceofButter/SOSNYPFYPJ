@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
   countries:any;
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
-  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private storage:Storage,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder,private modalController: ModalController) { 
+  constructor(public CognitoService: CognitoServiceService, public menuCtrl: MenuController,private storage:Storage,private router: Router,private authService: AuthenticationService, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private formBuilder: FormBuilder,private modalController: ModalController,) { 
     this.loginForm = this.formBuilder.group({
       email: ['',
         Validators.compose([Validators.required, Validators.email])],
@@ -33,8 +33,10 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Week 5")
+    console.log("Test 17")
   }
+
+
 
   async loginUser(loginForm: FormGroup): Promise<void> {
     if (!loginForm.valid) {

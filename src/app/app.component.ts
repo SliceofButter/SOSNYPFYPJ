@@ -85,7 +85,7 @@ export class AppComponent {
                   }
                   
                 ];
-              this.router.navigate(['adminhome']);
+              this.router.navigate(['inbox']);
             }
             else {
              

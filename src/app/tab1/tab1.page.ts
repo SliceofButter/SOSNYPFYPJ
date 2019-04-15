@@ -7,6 +7,7 @@ import { SOS } from '../classes/sos';
 import * as firebase from 'firebase';
 import { IonButton } from '@ionic/angular';
 import { Button } from 'protractor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -22,18 +23,16 @@ export class Tab1Page implements OnInit {
    someTextUrl;
    soslist:AngularFirestoreDocument<SOS>
    headline: string;
-  constructor(private dbService: DbserviceService, private fbdb: AngularFirestore) { }
+  constructor(private dbService: DbserviceService, private fbdb: AngularFirestore,private router: Router) { }
 
   ngOnInit() {
     this.RetrieveAllMessages();
   }
   ionViewWillEnter(){
-    //this.RetrieveAllMessages();
 
   }
 
-
-  accept(message:SOS)
+accept(message:SOS)
   {
     console.log(message.adminNo+"_"+message.UID)
     var docRef = this.fbdb.collection('attend').doc(message.adminNo+"_"+message.UID)
@@ -49,9 +48,10 @@ export class Tab1Page implements OnInit {
       attendedwho: firebase.auth().currentUser.email
     })
     var docRef2 = this.fbdb.collection('sos').doc(message.adminNo+"_"+message.UID)
-    docRef2.delete()
-
-
+    docRef2.delete().then(function(test){
+    alert("Help attended.")
+    location.reload()
+    });
     //console.log(this.messagesList[i])
     //var work = this.messagesList.indexOf(event.target)
     
@@ -59,13 +59,6 @@ export class Tab1Page implements OnInit {
     //this.getMessageArray()
     //this.soslist =this.fbdb.collection('sos').doc<SOS>()
   }
-  //getSomeText(){
-   // console.log(firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL().then(response => this.someTextUrl = response))
-   // firebase.storage().ref().child("w8a4s1dcz4").getDownloadURL()
-   // .then(response => this.someTextUrl = response)
-   // .catch(error => console.log('error', error))
-  // }
-
   RetrieveAllMessages(){
     console.log("retrievev12");
     // this.dbService.RetrieveAllMessages().then(data => {
@@ -76,7 +69,7 @@ export class Tab1Page implements OnInit {
     // this.dbService.RetrieveAllMessages()
     // .subscribe(data => console.log(data));
 
-     this.dbService.RetrieveAllMessage().valueChanges().subscribe((message) => {
+      this.dbService.RetrieveAllMessage().valueChanges().subscribe((message) => {
       this.messagesList = message;
       this.getMessageArray(this.messagesList);
     })
