@@ -7,6 +7,7 @@ export class SOS{
 
     headline; // emergency message
     currentDate; //date
+    name;
     adminNo; //student's admin no
     mapURL;
     desc;
@@ -14,12 +15,14 @@ export class SOS{
     attend;
     attendedwho;
     UID;
+    
 
 
     //constructor
-    InitializeSOSRecord(headline, currentDate, adminNo, desc, mapURL, imageURL, attend, attendedwho, UID){
+    InitializeSOSRecord(headline, currentDate, name, adminNo, desc, mapURL, imageURL, attend, attendedwho, UID){
         this.headline = headline;
         this.currentDate = currentDate;
+        this.name = name;
         this.adminNo = adminNo;
         this.desc = desc;
         this.mapURL = mapURL;

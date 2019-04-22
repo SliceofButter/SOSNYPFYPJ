@@ -37,6 +37,7 @@ accept(message:SOS)
     console.log(message.adminNo+"_"+message.UID)
     var docRef = this.fbdb.collection('attend').doc(message.adminNo+"_"+message.UID)
     docRef.set({
+      name: message.name,
       adminNo: message.adminNo,
       currentDate: message.currentDate,
       desc: message.desc,

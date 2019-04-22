@@ -8,6 +8,7 @@ import { NavParams, ModalController } from '@ionic/angular'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SOS } from '../classes/sos';
 import * as firebase from 'firebase';
+import { Profile } from '../classes/profile';
 import { when } from 'q';
 
 @Component({
@@ -98,6 +99,11 @@ export class ModalpagePage implements OnInit {
       var localmessage = this.msg
       var UID = Math.random().toString (36).substring(2);
       var mode = this.modalController
+      var userID = firebase.auth().currentUser.uid
+      var userList =this.fbdb.collection('userProfile').doc<Profile>(userID)
+      userList.valueChanges().subscribe(res =>{
+
+      
       var docRef = this.fbdb.collection('sos').doc(localemail+'_'+UID);
       firebase.storage().ref().child(randomstringpassed.toString()).getDownloadURL().then(function(url){
         imageURL=url;
@@ -108,6 +114,7 @@ export class ModalpagePage implements OnInit {
         
       //sos.InitializeSOSRecord(headline, newDate,localemail,localmessage,mapURL, imageURL);
       docRef.set({
+        name: res.name,
         adminNo: localemail,
         currentDate: newDate,
         desc: localmessage,
@@ -120,6 +127,7 @@ export class ModalpagePage implements OnInit {
       console.log(docRef)
       mode.dismiss();
       });
+    });
     });
     }
     
