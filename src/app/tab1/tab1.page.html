@@ -21,13 +21,21 @@
         <ion-card-content>
           {{ message.headline }}
           <br/>
-          Name: {{message.name}}
+          <b>Name: {{message.name}}</b>
           <br />
-          Description: {{ message.desc }}
+          <div *ngIf="message.desc">
+          <span>Description: {{ message.desc }}</span>
+          </div>
+          <div *ngIf="!message.desc">  
+          </div>
           <br />
           Tap this link to view on map: <a href="{{message.mapURL}}" target="_blank">Student's Location</a>
           <br />
-          <a href={{message.imageURL}} target="_blank">Student's Location Image</a>
+          <div *ngIf="message.imageURL">
+          <a id="image1" href={{message.imageURL}} target="_blank">Student's Location Image</a>
+          </div>
+          <div *ngIf="!message.imageURL">
+          </div>
           <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "accept(message)">
               Respond to Request
             </ion-button>
@@ -39,5 +47,4 @@
     
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
-
 </ion-content>

@@ -41,7 +41,7 @@ export class PicuploadPage implements OnInit {
     var mode = this.modal
     var reader = new FileReader();
     var userID = firebase.auth().currentUser.uid
-    var ref = firebase.storage().ref().child(userID)
+    var ref = firebase.storage().ref().child('userpic/'+userID)
     var task = ref.put(this.file).then(function(snapshot)
       {
         console.log("Uploaded a file")
@@ -53,7 +53,7 @@ export class PicuploadPage implements OnInit {
 timeout(){
   setTimeout(() => {
     var userID = firebase.auth().currentUser.uid
-    firebase.storage().ref().child(userID).getDownloadURL().then(function(url){
+    firebase.storage().ref().child('userpic/'+userID).getDownloadURL().then(function(url){
       console.log("the URL Image is: " + url);
       url;
       let photoURL = this.url

@@ -22,12 +22,20 @@
         {{ message.headline }}
         <br/>
         Name: {{message.name}}
-          <br />
+        <br />
+        <div *ngIf="message.desc">
         Description: {{ message.desc }}
         <br />
+        </div>
+        <div *ngIf="!message.desc">  
+        </div>
         Tap this link to view on map: <a href="{{message.mapURL}}" target="_blank">Student's Location</a>
         <br />
-        <a href={{message.imageURL}} target="_blank">Student's Location Image</a>
+        <div *ngIf="message.imageURL">
+        <a id="image1" href={{message.imageURL}} target="_blank">Student's Location Image</a>
+        </div>
+        <div *ngIf="!message.imageURL">
+        </div>
         <br />
         Attended by : {{message.attendedwho}}
       </ion-card-content>

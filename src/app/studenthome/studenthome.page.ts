@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { FcmService } from '../services/fcm.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SOS } from '../classes/sos';
+import { Profile } from '../classes/profile';
 import { AngularFireStorageModule, AngularFireStorage } from '@angular/fire/storage';
 import * as firebase from 'firebase';
 import { NavController, ModalController } from '@ionic/angular';
@@ -78,16 +79,10 @@ export class StudenthomePage implements OnInit {
     //}
 
     }
-  
+  */
  
 
   customMessage(lat, lng, mapURL) {
-
-
-
-    
-  
-
     if (lat != null || lng != null) {
       if (lat != "" || lng != "") {
 
@@ -102,16 +97,39 @@ export class StudenthomePage implements OnInit {
       
         //current date time
         var currentDateTime = new Date().toLocaleDateString('en-SG',options);
-        var newDate = new Date(Date.parse(Date()));
-        var docRef = this.fbdb.collection('sos').doc(this.email+'_'+currentDateTime);
-        var sos = new SOS();
-        sos.InitializeSOSRecord(headline, newDate,this.email,mapURL);
-        docRef.set(Object.assign({},sos));
-        alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.");
+      var newDate = new Date(Date.parse(Date()));
+      var testing = this.storage.get('logged');
+    Promise.all([testing]).then((arrayOfResults) => {
+      console.log(arrayOfResults[0]);
+      this.email = String(arrayOfResults[0]);
+      console.log(this.email + " 2")
+      const headline = "Emergency help requested from " + this.email;
+      var localemail = this.email
+      var UID = Math.random().toString (36).substring(2);
+      var mode = this.modalController
+      var userID = firebase.auth().currentUser.uid
+      var userList =this.fbdb.collection('userProfile').doc<Profile>(userID)
+      userList.valueChanges().subscribe(res =>{
+
+      
+        var docRef = this.fbdb.collection('sos').doc(localemail+'_'+UID);
+        docRef.set({
+          name: res.name,
+          adminNo: localemail,
+          currentDate: newDate,
+          desc: null,
+          headline: headline,
+          imageURL: null,
+          mapURL: mapURL,
+          UID: UID
+        })
+        alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
+      })
+    })
       }
     }
   }
-  */
+  
 
   ionViewWillEnter() {
     //call method to check if user is authenticated upon loading this page
@@ -135,7 +153,7 @@ export class StudenthomePage implements OnInit {
 
 
   //core function to get user current location via browser since this is a PWA app.
- /* getCurrentLocation() {
+  getCurrentLocation() {
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -172,7 +190,7 @@ export class StudenthomePage implements OnInit {
       );
     };
   }
-  */
+  
 
 
 }
