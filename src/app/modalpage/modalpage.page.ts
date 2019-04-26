@@ -90,7 +90,7 @@ export class ModalpagePage implements OnInit {
       var currentDateTime = new Date().toLocaleDateString('en-SG',options);
       var newDate = new Date(Date.parse(Date()));
       var testing = this.storage.get('logged');
-    Promise.all([testing]).then((arrayOfResults) => {
+      Promise.all([testing]).then((arrayOfResults) => {
       console.log(arrayOfResults[0]);
       this.email = String(arrayOfResults[0]);
       console.log(this.email + " 2")
@@ -110,8 +110,7 @@ export class ModalpagePage implements OnInit {
         console.log(imageURL)
         console.log(localemail)
         console.log(localmessage)
-        //var sos = new SOS();
-        
+      //var sos = new SOS();
       //sos.InitializeSOSRecord(headline, newDate,localemail,localmessage,mapURL, imageURL);
       docRef.set({
         name: res.name,

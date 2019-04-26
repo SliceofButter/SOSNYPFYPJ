@@ -41,7 +41,6 @@ export class RegistrationPage implements OnInit {
 
   ionViewWillEnter() {
     //disables sidemenu on login page
-    this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
@@ -79,6 +78,7 @@ export class RegistrationPage implements OnInit {
         );
         this.loading = await this.loadingCtrl.create();
         await this.loading.present();
+        this.signupForm.reset()
       }
       else{
         alert('Please use the correct email domain.');

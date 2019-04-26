@@ -82,10 +82,15 @@ export class AppComponent {
                     title: 'Inbox',
                     url: '/inbox',
                     icon: 'mail'
+                  },
+                  {
+                    title: 'Register an Account',
+                    url: '/registration',
+                    icon: 'person'
                   }
                   
                 ];
-              this.router.navigate(['inbox']);
+              this.router.navigate(['adminhome']);
             }
             else {
              

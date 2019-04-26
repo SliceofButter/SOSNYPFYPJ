@@ -31,6 +31,10 @@ export class ProfileregPage implements OnInit {
   ngOnInit() {
     console.log("Final Test")
   }
+  
+  ionViewWillEnter() {
+    //disables sidemenu on login page
+  }
 
   onSchoolSelected(schoolselected:any){
     console.log(schoolselected)
@@ -156,7 +160,7 @@ export class ProfileregPage implements OnInit {
       })
       alert('Account sucessfully created.')
       this.storage.remove("new")
-      this.router.navigateByUrl('login')
+      this.router.navigateByUrl('adminhome')
       
     }
 
