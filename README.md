@@ -10,7 +10,7 @@
     b. Password: iLovenyp123
 6. Upon login, you should see a popup below the screen asking you for permission to send notification. Press allow.
 7. Then, logout and login again.
-8.Upon login again, you should see a popup on top of the screen saying “subscribed to sos”.
+8. Upon login again, you should see a popup on top of the screen saying “subscribed to sos”.
 9. Once you see the popup “subscribed to sos” on top of the screen, you are done.
 # Student
 1. go to https://sosnypfypj-96657.firebaseapp.com on google chrome
