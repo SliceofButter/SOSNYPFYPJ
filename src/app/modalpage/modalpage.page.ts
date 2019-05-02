@@ -62,7 +62,7 @@ export class ModalpagePage implements OnInit {
       setTimeout(() => {
           this.getCurrentLocation(randomId);
 
-      }, 1000);
+      }, 2000);
 
 
       
