@@ -62,7 +62,7 @@ export class ModalpagePage implements OnInit {
       setTimeout(() => {
           this.getCurrentLocation(randomId);
 
-      }, 4000);
+      }, 1000);
 
 
       
@@ -186,7 +186,7 @@ export class ModalpagePage implements OnInit {
               break;
           }
         },
-        { maximumAge: 600000, timeout: 2000, enableHighAccuracy: true }
+        { maximumAge: 600000, timeout: 5000, enableHighAccuracy: true }
       );
     };
   }
