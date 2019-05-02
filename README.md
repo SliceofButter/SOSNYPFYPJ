@@ -1,6 +1,7 @@
 # SOSNYP
 
-# User manual guide (how to run the application) Admin (Notifications only work for android phone browser)
+# User manual guide (how to run the application) 
+##Admin (Notifications only work for android phone browser)
 1. go to https://sosnypfypj-96657.firebaseapp.com  on google chrome
 2. You should see the login screen
 3. Below the screen, there should have a popup asking you to add the app to home screen. Press add and add the app to your home screen
@@ -12,7 +13,7 @@
 7. Then, logout and login again.
 8. Upon login again, you should see a popup on top of the screen saying “subscribed to sos”.
 9. Once you see the popup “subscribed to sos” on top of the screen, you are done.
-# Student
+## Student
 1. go to https://sosnypfypj-96657.firebaseapp.com on google chrome
 2. You should see the login screen
 3. Below the screen, there should have a popup asking you to add the app to home screen. Press add and add the app to your home screen
