@@ -1,6 +1,7 @@
 # SOSNYP
 
 # User manual guide (how to run the application) 
+
 ##Admin (Notifications only work for android phone browser)
 1. go to https://sosnypfypj-96657.firebaseapp.com  on google chrome
 2. You should see the login screen
