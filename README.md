@@ -6,8 +6,8 @@
 3. Below the screen, there should have a popup asking you to add the app to home screen. Press add and add the app to your home screen
 4. At your home screen, tap on the app, you should see the login screen.
 5. Login with credentials
-    a. Email: sitadmin@test.nyp.edu.sg
-    b. Password: iLovenyp123
+    1. Email: sitadmin@test.nyp.edu.sg
+    2. Password: iLovenyp123
 6. Upon login, you should see a popup below the screen asking you for permission to send notification. Press allow.
 7. Then, logout and login again.
 8. Upon login again, you should see a popup on top of the screen saying “subscribed to sos”.
