@@ -18,6 +18,6 @@
 3. Below the screen, there should have a popup asking you to add the app to home screen. Press add and add the app to your home screen
 4. At your home screen, tap on the app, you should see the login screen.
 5. Login with credentials
-    a. Email: 165327J@mymail.nyp.edu.sg OR 165463F@mymail.nyp.edu.sg
-    b. Password: iLovenyp123
+    1. Email: 165327J@mymail.nyp.edu.sg OR 165463F@mymail.nyp.edu.sg
+    2. Password: iLovenyp123
 6. Go to your phone settings to allow location based services on your phone browser. E.g allow location based service on google chrome.
