@@ -2,7 +2,7 @@
 
 # User manual guide (how to run the application) 
 
-##Admin (Notifications only work for android phone browser)
+## Admin (Notifications only work for android phone browser)
 1. go to https://sosnypfypj-96657.firebaseapp.com  on google chrome
 2. You should see the login screen
 3. Below the screen, there should have a popup asking you to add the app to home screen. Press add and add the app to your home screen
