@@ -15,11 +15,12 @@ export class SOS{
     attend;
     attendedwho;
     UID;
+    studID;
     
 
 
     //constructor
-    InitializeSOSRecord(headline, currentDate, name, adminNo, desc, mapURL, imageURL, attend, attendedwho, UID){
+    InitializeSOSRecord(headline, currentDate, name, adminNo, desc, mapURL, imageURL, attend, attendedwho, UID,studID){
         this.headline = headline;
         this.currentDate = currentDate;
         this.name = name;
@@ -30,6 +31,7 @@ export class SOS{
         this.attend= attend;
         this.attendedwho=attendedwho;
         this.UID = UID
+        this.studID = studID;
     }
 
 }

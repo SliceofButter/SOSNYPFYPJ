@@ -120,7 +120,8 @@ export class ModalpagePage implements OnInit {
         headline: headline,
         imageURL: imageURL,
         mapURL: mapURL,
-        UID: UID
+        UID: UID,
+        studID: userID
       })
       alert("Your help has been sent to safety warrant. Please be calmed while waiting safety warrant look for you.")
       console.log(docRef)

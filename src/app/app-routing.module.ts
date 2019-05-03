@@ -32,6 +32,8 @@ const routes: Routes = [
   { path: 'profilereg', loadChildren: './profilereg/profilereg.module#ProfileregPageModule' },
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
+  { path: 'studentprofile/:myid', loadChildren: './studentprofile/studentprofile.module#StudentprofilePageModule' },
+
 
 
 

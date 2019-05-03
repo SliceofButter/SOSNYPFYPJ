@@ -22,6 +22,7 @@
           {{ message.headline }}
           <br/>
           <b>Name: {{message.name}}</b>
+          <a routerLink="/studentprofile/{{message.studID}}" routerDirection="forward"> Student Profile</a>
           <br />
           <div *ngIf="message.desc">
           <span>Description: {{ message.desc }}</span>
