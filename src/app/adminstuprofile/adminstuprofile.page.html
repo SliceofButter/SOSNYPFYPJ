@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>adminstuprofile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="user |async">
+    <ion-card-content>
+        <ion-avatar class="avatars">
+            <ion-img src="{{photoURL}}"></ion-img>
+          </ion-avatar>
+      <ion-card-title id="test" text-center >
+        <b>Name:</b> {{name}}
+      </ion-card-title>
+      <p text-center>
+        <b>Admin Number:</b> {{adminnumber}}
+      </p>
+      <p text-center>
+        <b>School:</b> {{school}}
+      </p>
+  
+      <p text-center>
+        <b>Course:</b> {{course}}
+      </p>
+  
+      <ion-button expand = 'full' fill= 'clear' color="primary" (click) = "openModal()">
+        Change Profile Picture
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

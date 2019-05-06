@@ -49,19 +49,26 @@
   <!--<input #inputcamera type="file"(change)="onUpload($event)"  /> -->
   <!----<a (click)="getSomeText()" href={{someTextUrl}} target="_blank">Student's Location Image</a>-->
   <!--<ion-button expand ="full" (click) = 'openModal()'>Modal</ion-button>-->
+
     <div id="emergencyBtn">
-      <ion-button shape="round" id="emergencyIonButton" (click)="openModal()" color="danger" style="margin-bottom:-80px">
+      <ion-button shape="round" id="emergencyIonButton" (click)="openModal()" color="primary" style="margin-bottom:-80px">
         <!-- <ion-icon name="alert"></ion-icon> -->
-        SEND HELP
+        DETAILED HELP
       </ion-button>
     </div>
-    <div id="quickBtn">
-      <ion-button shape="round" id="emergencyIonButton" (click)="getCurrentLocation()" color="danger" style="margin-bottom:-80px">
+    <div id="emergencyBtn2">
+      <ion-button shape="round" id="emergencyIonButton2" (click)="getCurrentLocation()" color="danger" style="margin-bottom:-80px">
         <!-- <ion-icon name="alert"></ion-icon> -->
         QUICK HELP
       </ion-button>
     </div>
-      
+    <!--
+    <div id="quickBtn">
+      <ion-button shape="round" id="emergencyIonButton" (click)="getCurrentLocation()" color="danger" style="margin-bottom:-80px">
+        QUICK HELP
+      </ion-button>
+    </div>
+-->
     
 
   

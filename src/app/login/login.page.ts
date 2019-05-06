@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Testing Pic Folder - 11")
+    console.log("Testing Pic Folder - 24")
   }
 
 
