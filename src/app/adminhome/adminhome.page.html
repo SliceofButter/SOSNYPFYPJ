@@ -24,10 +24,22 @@
 
 <ion-content padding>
   <br/>
-
-  <!-- <ion-button (click)="getPermission()" [disabled]="alertPermission == 1">Alert Me</ion-button> -->
-  <!-- <ion-button (click)="fcm.sub('sos')">Subscribe to Topic</ion-button> -->
-
-  
+  Testing tesing
+  <!--
+<ion-card *ngFor="let message of lazyList" class="options">
+Number of Attended Case:{{lazyList?.length}}
+Number of Unattended Case: 
+</ion-card>
+-->
+<ion-card>
+  <ion-card-content>
+    <p text-center>
+      <b>Number of cases Attended: </b> {{messagesList2.length}}
+    </p>
+    <p text-center>
+      <b>Number of cases Unattended: </b> {{messagesList.length}}
+    </p>
+  </ion-card-content>
+</ion-card>
   
 </ion-content>
