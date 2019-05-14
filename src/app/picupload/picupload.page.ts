@@ -18,10 +18,12 @@ export class PicuploadPage implements OnInit {
 
   constructor(private dbService: DbserviceService, private fbdb: AngularFirestore, private modal: ModalController) { }
 
+  //Function runs when page is intialized for the first time
   ngOnInit() {
     console.log(firebase.auth().currentUser.uid)
   }
 
+  //Allows user to upload an image onto a fileReader
   changeListener(event) {
     if(event.target.files && event.target.files[0]){
       let reader = new FileReader();
@@ -36,6 +38,7 @@ export class PicuploadPage implements OnInit {
       console.log(this.file);
   }
 
+  //Function uploads the image the user chooses into Firebase storage
   upload(){
     console.log(this.file)
     var mode = this.modal
@@ -50,6 +53,7 @@ export class PicuploadPage implements OnInit {
       mode.dismiss();
 }
 
+//Timeout function that delays the upload function by 2 seconds to grab  the downloadURL of the image from firebase
 timeout(){
   setTimeout(() => {
     var userID = firebase.auth().currentUser.uid
@@ -63,6 +67,8 @@ timeout(){
     this.fbdb.doc(`userProfile/${userID}`).update({photoURL:imageURL})  })// save url in Firestore database realtime
   },2000);
 }
+
+//function that closes the Modal when clicked
 closeModal()
 {
   this.modal.dismiss();

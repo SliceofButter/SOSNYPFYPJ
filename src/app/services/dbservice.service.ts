@@ -55,6 +55,7 @@ export class DbserviceService {
   // }
 
 
+  //Retrieves all documents in the 'SOS' section of firebase database
   RetrieveAllMessage(): AngularFirestoreCollection<any>{
     // this.messagesList = this.fbdb.collection<any>('sos');
     // console.log("what is this message list 2");
@@ -64,6 +65,7 @@ export class DbserviceService {
     return this.fbdb.collection('sos');
   }
 
+  //Retrieves all documents in the 'attend' section of firebase database
   RetrieveAllMessageA(): AngularFirestoreCollection<any>{
     // this.messagesList = this.fbdb.collection<any>('sos');
     // console.log("what is this message list 2");
@@ -73,6 +75,8 @@ export class DbserviceService {
     return this.fbdb.collection('attend');
   }
 
+  
+  //Retrieves all documents in the 'userProfile' section of firebase database
   RetrieveAllUsers():AngularFirestoreCollection<any>
   {
     return this.fbdb.collection('userProfile')

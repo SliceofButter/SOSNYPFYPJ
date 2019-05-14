@@ -45,6 +45,7 @@ export class RegistrationstudentPage implements OnInit {
     //disables sidemenu on login page
     this.menuCtrl.enable(false);
   }
+  //Signup function for user to register an account
   async signupUser(signupForm: FormGroup): Promise<void> {
     const email: string = signupForm.value.email;
     const password: string = signupForm.value.password;

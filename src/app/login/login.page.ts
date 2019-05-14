@@ -32,12 +32,13 @@ export class LoginPage implements OnInit {
     });
   }
 
+  //function that runs upon first initialization of the page
   ngOnInit() {
     console.log("Testing Pic Folder - 24")
   }
 
 
-
+//Login function for the user that authenticates them as either 'Student' or 'Admin' and redirects them to the respective views
   async loginUser(loginForm: FormGroup): Promise<void> {
     if (!loginForm.valid) {
       console.log('Form is not valid yet, current value:', loginForm.value);
@@ -83,11 +84,12 @@ export class LoginPage implements OnInit {
       );
     }
   }
+  //code that runs upon every entry to the page
   ionViewWillEnter() {
     //disables sidemenu on login page
     this.menuCtrl.enable(false);
   }
-
+//code that runs upon every leave of the page
   ionViewWillLeave(){
     console.log('Leaving login Page');
     this.menuCtrl.enable(true);
@@ -115,6 +117,7 @@ export class LoginPage implements OnInit {
     });
   }
 
+  //function to open up a Modal upon being clicked
   async openModal()
   {
     const modal = await this.modalController.create({
@@ -124,6 +127,7 @@ export class LoginPage implements OnInit {
     });
     modal.present();
   }
+  //old method of login
   login(){
     this.CognitoService.authenticate(this.email, this.password)
     .then(res =>{

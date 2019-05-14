@@ -43,8 +43,10 @@ export class RegistrationPage implements OnInit {
     //disables sidemenu on login page
   }
 
+
   ngOnInit() {
   }
+  //Signup function for user to register an account
   async signupUser(signupForm: FormGroup): Promise<void> {
     const email: string = signupForm.value.email;
     const password: string = signupForm.value.password;

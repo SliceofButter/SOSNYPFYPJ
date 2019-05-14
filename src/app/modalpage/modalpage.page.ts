@@ -29,12 +29,13 @@ export class ModalpagePage implements OnInit {
 
    }
 
+   //function that runs when page is intialized for the first time
   ngOnInit() {
     console.log("Testing new version2?")
 
   }
   
-
+//Function that changes the file variable to have the target picture that's uploaded
   changeListener(event) {
     this.file = event.target.files[0];
     console.log(this.file)

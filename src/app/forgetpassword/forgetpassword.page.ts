@@ -26,8 +26,8 @@ export class ForgetPasswordPage implements OnInit {
       ],
     });
   }
-
   ngOnInit() {}
+  //function to allow users to send a request to reset their account password
   resetPassword(resetPasswordForm: FormGroup): void {
     if (!resetPasswordForm.valid) {
       console.log(
@@ -61,6 +61,7 @@ export class ForgetPasswordPage implements OnInit {
       );
     }
   }
+  //closes the modal upon click
   closeModal()
   {
     this.modalController.dismiss();

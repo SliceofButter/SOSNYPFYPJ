@@ -33,6 +33,7 @@ export class StudenthomePage implements OnInit {
 
 
 
+  //Function that runs when the page is intialized for the first time
   ngOnInit() {
     // this.route.params.subscribe(data => {
     //   this.email = data;
@@ -40,6 +41,7 @@ export class StudenthomePage implements OnInit {
     console.log(firebase.auth().currentUser.uid)
   }
 
+  //Function to open up the modal for Modalpage(which is the detailed request)
   async openModal()
   {
     const modal = await this.modalController.create({
@@ -81,7 +83,7 @@ export class StudenthomePage implements OnInit {
     }
   */
  
-
+//Function that gets the langtitude and longtitude of the user's device on the map as well as the time and date that they click on the button before sending the request into Firebase database
   customMessage(lat, lng, mapURL) {
     if (lat != null || lng != null) {
       if (lat != "" || lng != "") {

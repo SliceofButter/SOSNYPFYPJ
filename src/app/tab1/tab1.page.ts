@@ -25,6 +25,7 @@ export class Tab1Page implements OnInit {
    headline: string;
   constructor(private dbService: DbserviceService, private fbdb: AngularFirestore,private router: Router) { }
 
+  //Function that runs when the page is intialized for the first time
   ngOnInit() {
     this.RetrieveAllMessages();
   }
@@ -32,6 +33,7 @@ export class Tab1Page implements OnInit {
 
   }
 
+//Function for when the admin clicks on send help that will update the request with whichever admin account attended to the request
 accept(message:SOS)
   {
     console.log(message.adminNo+"_"+message.UID)
@@ -60,6 +62,8 @@ accept(message:SOS)
     //this.getMessageArray()
     //this.soslist =this.fbdb.collection('sos').doc<SOS>()
   }
+
+  //Function that retrieves all messages that are in the 'sos' section
   RetrieveAllMessages(){
     console.log("retrievev12");
     // this.dbService.RetrieveAllMessages().then(data => {
@@ -83,6 +87,7 @@ accept(message:SOS)
   
   }
 
+  //Sorts all the messages that are retrieved by latest time and date
   getMessageArray(messages:SOS[]){
     
    
@@ -100,6 +105,7 @@ accept(message:SOS)
   }
   
 
+  //Allows lazyLoading 
   loadMoreMessage(event){
     console.log('Begin async operation');
 

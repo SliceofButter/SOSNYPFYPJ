@@ -24,11 +24,12 @@ export class InboxPage implements OnInit {
     
   }
 
+  //when clicked, the tab will switch to tab2
   tab2Selected()
   {
     console.log('Tab 2 Selected')
   }
-
+  //RetrieveAllMessages run upon each time the user enters the page
   ionViewWillEnter(){
     this.RetrieveAllMessages();
   }
@@ -40,6 +41,8 @@ export class InboxPage implements OnInit {
    // .catch(error => console.log('error', error))
   // }
 
+
+  //function that retrieves all requests that have been sent to the 
   RetrieveAllMessages(){
     console.log("retrievev12");
     // this.dbService.RetrieveAllMessages().then(data => {
@@ -79,7 +82,7 @@ export class InboxPage implements OnInit {
     console.log(this.messagesList);
   }
   
-
+//function that allows lazy loading of the inbox
   loadMoreMessage(event){
     console.log('Begin async operation');
 

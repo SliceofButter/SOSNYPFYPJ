@@ -41,16 +41,19 @@ export class TutorialPage implements OnInit {
   ngOnInit() {
   }
 
+  //function that allows the user to skip the tutorial if the state of 'tutorialComplete' is set to true
   async skip() {
     await this.storage.set('tutorialComplete', true);
     this.router.navigateByUrl('/studenthome')
   }
 
+  //Checks if the user has reached the end of the tutorial
   slideChanged() {
     if (this.slides.isEnd())
       this.skipMsg = "Alright, I got it";
   }
 
+  //Animation for when the user swipes right if the active page's index is higher than the previous and swipes left if vice versa
   slideMoved() {
     if (this.slides.getActiveIndex() >= this.slides.getPreviousIndex()) 
       this.state = 'rightSwipe';

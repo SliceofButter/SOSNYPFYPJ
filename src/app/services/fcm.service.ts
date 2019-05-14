@@ -26,6 +26,7 @@ export class FcmService {
     } catch (e) { }
   }
 
+  //Toast function that displays the message whenever a request is sent for 5 seconds
   async makeToast(message) {
     const toast = await this.toastController.create({
       message,

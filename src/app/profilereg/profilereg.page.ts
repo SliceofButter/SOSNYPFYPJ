@@ -28,14 +28,17 @@ export class ProfileregPage implements OnInit {
 
   constructor(private router: Router,private authService: AuthenticationService, private afDatabase: AngularFirestore, private storage:Storage) { }
 
+  //function that runs when the page is initialized for the first time
   ngOnInit() {
     console.log("Final Test")
   }
+
   
   ionViewWillEnter() {
     //disables sidemenu on login page
   }
 
+  //function that switches the courses displayed whenever the user picks a school
   onSchoolSelected(schoolselected:any){
     console.log(schoolselected)
     if(schoolselected == "SIT")
@@ -121,6 +124,7 @@ export class ProfileregPage implements OnInit {
 
   }
 
+  //function to check for verification if user has inputted all fields
   registerProfile(){
     if(this.name == null)
     {

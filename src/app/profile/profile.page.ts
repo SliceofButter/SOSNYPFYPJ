@@ -46,12 +46,14 @@ export class ProfilePage implements OnInit {
    // document.getElementById("test").innerHTML = this.name
    }
 
+   //Function that runs when page is initialized for the first time
   ngOnInit() {
     console.log(firebase.auth().currentUser.uid)
     console.log("1 New Pic?")
   }
 
 
+  //Function that opens up the Modal for picupload
   async openModal()
   {
     const modal = await this.modalController.create({

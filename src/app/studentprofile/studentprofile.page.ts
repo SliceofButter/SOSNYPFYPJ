@@ -25,6 +25,7 @@ export class StudentprofilePage implements OnInit {
   myId = null;
   constructor(private activatedRoute: ActivatedRoute,private fbdb: AngularFirestore) { }
 
+  //Function that runs when the page is intialized for the first time
  ngOnInit() {
    this.myId = this.activatedRoute.snapshot.paramMap.get('myid');
    this.userList =this.fbdb.collection('userProfile').doc<Profile>(this.myId)

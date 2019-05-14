@@ -23,6 +23,7 @@ export class Tab2Page implements OnInit {
   headline: string;
   constructor(private dbService: DbserviceService, private fbdb: AngularFirestore) { }
 
+//Function that runs when the page is intialized for the first time
   ngOnInit() {
     this.RetrieveAllMessages();
   }
@@ -31,6 +32,7 @@ export class Tab2Page implements OnInit {
 
   }
 
+  //Function that retrieves all messages that are in the 'attend' section
   RetrieveAllMessages(){
     console.log("retrievev12");
      this.dbService.RetrieveAllMessageA().valueChanges().subscribe((message) => {
@@ -45,6 +47,7 @@ export class Tab2Page implements OnInit {
   
   }
 
+  //Sorts all the messages that are retrieved by latest time and date
   getMessageArray(messages:SOS[]){
 
     this.messagesList = messages.sort((a,b)=> { return +new Date(b.currentDate.seconds).getTime() - +new Date(a.currentDate.seconds).getTime(); });
@@ -57,11 +60,13 @@ export class Tab2Page implements OnInit {
   }
   
 
+  //Allows lazyLoading
   loadMoreMessage(event){
     console.log('Begin async operation');
 
     this.pageLimit++;
 
+    //sets a timeout of 0.5 seconds
     setTimeout(() => {
       
       this.messagesList.slice(this.pageLimit,this.pageLimit+=4).forEach((x)=> {
