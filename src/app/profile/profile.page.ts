@@ -21,6 +21,7 @@ export class ProfilePage implements OnInit {
   school;
   course;
   photoURL;
+  gender;
   file: File;
 
   constructor(private dbService: DbserviceService, private fbdb: AngularFirestore,private modalController: ModalController) {
@@ -32,6 +33,7 @@ export class ProfilePage implements OnInit {
       this.adminnumber = res.adminNo;
       this.school = res.school;
       this.course = res.course;
+      this.gender=res.gender;
       if(res.photoURL == null)
       {
        this.photoURL = "../../assets/img/user.png"

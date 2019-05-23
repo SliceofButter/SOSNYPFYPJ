@@ -1,0 +1,34 @@
+ion-select{
+    max-width: 100% !important; 
+    padding-bottom: 10px !important;
+    text-align: right !important; 
+    height: 41px !important; 
+    width:100%;
+    padding-left: 20px;
+    font-size: 12px;
+  }
+  ion-label{
+    font-size: 12px !important;
+  }
+  ion-input{
+    font-size: 12px !important;
+  }
+  #schoolcss{
+    position:fixed !important;
+    overflow: hidden !important;
+    text-overflow:clip !important;
+  }
+  #coursecss
+  {
+    padding-left: -20px
+  }
+  .input-wrapper {
+    text-overflow: initial !important;
+    overflow: initial !important; 
+ }
+ .alert-wrapper.sc-ion-alert-md {
+   border-radius: 4px;
+   -webkit-box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+   box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+   width:100% !important;
+ }

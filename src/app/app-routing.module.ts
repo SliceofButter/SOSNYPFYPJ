@@ -33,6 +33,8 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
   { path: 'studentprofile/:myid', loadChildren: './studentprofile/studentprofile.module#StudentprofilePageModule' },
+  { path: 'registrationstudent', loadChildren: './registrationstudent/registrationstudent.module#RegistrationstudentPageModule' },  { path: 'profileregstudent', loadChildren: './profileregstudent/profileregstudent.module#ProfileregstudentPageModule' },
+
 
 
 

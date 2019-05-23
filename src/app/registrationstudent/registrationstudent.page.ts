@@ -64,7 +64,7 @@ export class RegistrationstudentPage implements OnInit {
         this.authService.signupUser(email, password).then(
           () => {
             this.loading.dismiss().then(() => {
-              this.router.navigateByUrl('profilereg');
+              this.router.navigateByUrl('profileregstudent');
             });
           },
           error => {

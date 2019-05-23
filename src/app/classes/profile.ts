@@ -4,4 +4,5 @@ export interface Profile{
     school: string;
     course: string;
     photoURL: string;
+    gender: string;
 }

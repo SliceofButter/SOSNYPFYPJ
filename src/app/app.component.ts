@@ -79,6 +79,11 @@ export class AppComponent {
                     icon: 'log-out'
                   },
                   {
+                    title: 'Home',
+                    url: '/adminhome',
+                    icon: 'home'
+                  },
+                  {
                     title: 'Inbox',
                     url: '/inbox',
                     icon: 'mail'

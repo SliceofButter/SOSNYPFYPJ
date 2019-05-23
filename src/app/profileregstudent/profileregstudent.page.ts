@@ -7,17 +7,15 @@ import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { StudentCourse } from '../classes/studentcourse';
-
-
-
+import {MenuController} from "@ionic/angular";
 
 
 @Component({
-  selector: 'app-profilereg',
-  templateUrl: './profilereg.page.html',
-  styleUrls: ['./profilereg.page.scss'],
+  selector: 'app-profileregstudent',
+  templateUrl: './profileregstudent.page.html',
+  styleUrls: ['./profileregstudent.page.scss'],
 })
-export class ProfileregPage implements OnInit {
+export class ProfileregstudentPage implements OnInit {
   name:string;
   adminNo: string;
   school: any;
@@ -27,19 +25,14 @@ export class ProfileregPage implements OnInit {
   uid;
   gender: string;
 
-  constructor(private router: Router,private authService: AuthenticationService, private afDatabase: AngularFirestore, private storage:Storage) { }
+  constructor(private router: Router,private authService: AuthenticationService, private afDatabase: AngularFirestore, private storage:Storage,public menuCtrl: MenuController) { }
 
-  //function that runs when the page is initialized for the first time
   ngOnInit() {
-    console.log("Final Test")
   }
-
   
   ionViewWillEnter() {
-    //disables sidemenu on login page
+    this.menuCtrl.enable(false);
   }
-
-  //function that switches the courses displayed whenever the user picks a school
   onSchoolSelected(schoolselected:any){
     console.log(schoolselected)
     if(schoolselected == "SIT")
@@ -171,10 +164,9 @@ export class ProfileregPage implements OnInit {
       })
       alert('Account sucessfully created.')
       this.storage.remove("new")
-      this.router.navigateByUrl('adminhome')
+      this.router.navigateByUrl('login')
       
     }
 
   }
-
 }

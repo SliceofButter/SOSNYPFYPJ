@@ -22,6 +22,7 @@ export class StudentprofilePage implements OnInit {
   school;
   course;
   photoURL;
+  gender;
   myId = null;
   constructor(private activatedRoute: ActivatedRoute,private fbdb: AngularFirestore) { }
 
@@ -36,6 +37,7 @@ export class StudentprofilePage implements OnInit {
       this.adminnumber = res.adminNo;
       this.school = res.school;
       this.course = res.course;
+      this.gender=res.gender;
       if(res.photoURL == null)
       {
        this.photoURL = "../../assets/img/user.png"

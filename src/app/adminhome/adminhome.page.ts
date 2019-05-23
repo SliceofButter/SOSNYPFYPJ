@@ -33,7 +33,7 @@ export class AdminhomePage implements OnInit {
   }
   //Uses database service to retrieve all entries in the 'sos' section
   RetrieveAllMessages(){
-    console.log("Retrieving ALL Messages");
+    console.log("Pending Cases");
      this.dbService.RetrieveAllMessage().valueChanges().subscribe((message) => {
       this.messagesList = message;
       this.getMessageArray(this.messagesList);
@@ -84,7 +84,7 @@ export class AdminhomePage implements OnInit {
   }
   //Uses database service to retrieve all entries in the 'attended' section
   RetrieveAllMessages2(){
-    console.log("retrievev12");
+    console.log("Attended Cases");
      this.dbService.RetrieveAllMessageA().valueChanges().subscribe((message2) => {
       this.messagesList2 = message2;
       this.getMessageArray2(this.messagesList2);
