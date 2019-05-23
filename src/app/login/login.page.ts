@@ -54,6 +54,7 @@ export class LoginPage implements OnInit {
           this.loading.dismiss().then(() => {
             if(email.substring(7,25) === "@mymail.nyp.edu.sg")
             {
+              //to check if the user is a student
               this.storage.set("logged", email).then(() => {
                 this.authService.authenticationState.next(true);
               });
@@ -61,6 +62,7 @@ export class LoginPage implements OnInit {
             }
             else if(email.substring(8) == "@test.nyp.edu.sg")
             {
+              //to check if the user is an admin
               this.storage.set("logged", email).then(() => {
                 this.authService.authenticationState.next(true);
               });
