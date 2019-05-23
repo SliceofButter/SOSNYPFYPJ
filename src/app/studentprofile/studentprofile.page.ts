@@ -27,6 +27,7 @@ export class StudentprofilePage implements OnInit {
 
   //Function that runs when the page is intialized for the first time
  ngOnInit() {
+   //myID gets the id from the url of the webpage and compares it to the documents in the 'userProfile' section of firebase database to find a similar entry and saves the document's data to the values
    this.myId = this.activatedRoute.snapshot.paramMap.get('myid');
    this.userList =this.fbdb.collection('userProfile').doc<Profile>(this.myId)
     this.user = this.userList.valueChanges()

@@ -28,9 +28,6 @@ export class Tab2Page implements OnInit {
     this.RetrieveAllMessages();
   }
 
-  ionViewWillEnter(){
-
-  }
 
   //Function that retrieves all messages that are in the 'attend' section
   RetrieveAllMessages(){

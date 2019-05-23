@@ -29,9 +29,6 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.RetrieveAllMessages();
   }
-  ionViewWillEnter(){
-
-  }
 
 //Function for when the admin clicks on send help that will update the request with whichever admin account attended to the request
 accept(message:SOS)

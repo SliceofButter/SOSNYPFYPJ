@@ -42,7 +42,7 @@
     "cordova": "^8.1.2",
     "core-js": "^2.5.4",
     "cors": "^2.8.5",
-    "firebase": "^5.8.5",
+    "firebase": "^5.11.1",
     "firebase-login": "^1.0.0",
     "ionic": "^4.10.3",
     "rxjs": "~6.3.3",

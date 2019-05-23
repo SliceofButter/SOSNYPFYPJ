@@ -9,7 +9,7 @@
       <ion-card-header>
         
         <ion-card-title >
-          {{ message.adminNo }}
+          Student Name: {{message.name}}
         </ion-card-title>
   
         <ion-card-subtitle>
@@ -21,7 +21,6 @@
       <ion-card-content>
         {{ message.headline }}
         <br/>
-        Name: {{message.name}}
         <a routerLink="/studentprofile/{{message.studID}}" routerDirection="forward"> Student Profile</a>
         <br />
         <div *ngIf="message.desc">
